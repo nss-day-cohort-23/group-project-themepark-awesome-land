@@ -9,14 +9,15 @@ let currentTime = new Date();
 let hours = currentTime.getHours();
 let minutes = currentTime.getMinutes();
 let date = currentTime.getDate();
+let morn = "AM";
 
 if (hours > 12) {
     hours = hours - 12;
-    // hours = hours
-    console.log("current time", hours + ":" + minutes);
+    morn = "PM";
+    let footerTime = hours + ":" + minutes + " " + morn;
+    $("#currentTime").html(footerTime);
 }
 
-$("#currentTime").html(currentTime);
 },{"jquery":2}],2:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v3.2.1
