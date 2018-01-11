@@ -1,12 +1,13 @@
 "use strict";
 
 const factory = require('./factory');
+const currentEvents = require('./currentEvents');
 
 const $ = require('jquery');
 
-factory.getParkInfo();
-factory.getAreas();
-factory.getAttractions();
+// factory.getParkInfo();
+// factory.getAreas();
+// factory.getAttractions();
 
 console.log("Is this working?");
 
@@ -33,28 +34,27 @@ function setCurrentTime() {
     let footerTime = dayArr[day] + " " + currentEventTime;
     $("#currentTime").html(footerTime);
 }
-
 setCurrentTime();
 setInterval( setCurrentTime, 1000);
 
-// Set events based on current time
-function getCurrentTimeEvents() {
-    console.log("getCurrentTimeEvents is running");
-    let currentTime = new Date();
-    let hour = currentTime.getHours();
-    let currentHour = hour.toString();
-    let thisTime = currentHour + ":00";
-    console.log("currentTime", thisTime);
-    return new Promise( (resolve, reject) => {
-        $.ajax({
-            url:'https://awesome-land.firebaseio.com/attractions.json'
-        })
-        .done((data)=>{
-            console.log("getCurrentTimeEvents", data);
-        });
-    });
-}
-getCurrentTimeEvents();
+// // Set events based on current time
+// function getCurrentTimeEvents() {
+//     console.log("getCurrentTimeEvents is running");
+//     let currentTime = new Date();
+//     let hour = currentTime.getHours();
+//     let currentHour = hour.toString();
+//     let thisTime = currentHour + ":00";
+//     console.log("currentTime", thisTime);
+//     return new Promise( (resolve, reject) => {
+//         $.ajax({
+//             url:'https://awesome-land.firebaseio.com/attractions.json'
+//         })
+//         .done((data)=>{
+//             console.log("getCurrentTimeEvents", data);
+//         });
+//     });
+// }
+// getCurrentTimeEvents();
 
 
 

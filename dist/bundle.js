@@ -2,6 +2,53 @@
 "use strict";
 
 const $ = require('jquery');
+const factory = require('./factory');
+
+factory.getAttractions();
+
+// Set events based on current time
+function getCurrentTimeEvents(data) {
+    console.log("getCurrentTimeEvents is running");
+    let currentTime = new Date();
+    let hour = currentTime.getHours();
+    let currentHour = hour.toString();
+    let thisTime = currentHour;
+    console.log("currentTime", thisTime);
+}
+getCurrentTimeEvents();
+
+factory.getAttractions().then(data => {
+    console.log("getAttractions is running", data);
+    let currentArr = [];
+    let currentTime = new Date();
+    let thisHour = currentTime.getHours().toString();
+    console.log("thisHour", thisHour);
+    console.log(typeof thisHour);
+    data.forEach( attraction => {
+        if (attraction.times) {
+        let attractionTimeLength = attraction.times;
+        console.log("attraction time", attraction.times);
+        for(let i=0; i < attractionTimeLength.length; i++) {
+            if(attraction.times[i].startsWith(thisHour)) {
+                console.log("Please", attraction);
+            }
+        }
+
+        }
+        // let eventsNow = attraction.times.filter( hour => {
+        //     if (hour.includes(thisHour));
+        //     console.log("hour", hour);
+        // });
+    });
+});
+
+
+
+
+},{"./factory":2,"jquery":4}],2:[function(require,module,exports){
+"use strict";
+
+const $ = require('jquery');
 
 module.exports.getParkInfo = () => {
     return new Promise((resolve, reject) => {
@@ -44,16 +91,17 @@ module.exports.getAttractions = () => {
         });
     });
 };
-},{"jquery":3}],2:[function(require,module,exports){
+},{"jquery":4}],3:[function(require,module,exports){
 "use strict";
 
 const factory = require('./factory');
+const currentEvents = require('./currentEvents');
 
 const $ = require('jquery');
 
-factory.getParkInfo();
-factory.getAreas();
-factory.getAttractions();
+// factory.getParkInfo();
+// factory.getAreas();
+// factory.getAttractions();
 
 console.log("Is this working?");
 
@@ -80,28 +128,27 @@ function setCurrentTime() {
     let footerTime = dayArr[day] + " " + currentEventTime;
     $("#currentTime").html(footerTime);
 }
-
 setCurrentTime();
 setInterval( setCurrentTime, 1000);
 
-// Set events based on current time
-function getCurrentTimeEvents() {
-    console.log("getCurrentTimeEvents is running");
-    let currentTime = new Date();
-    let hour = currentTime.getHours();
-    let currentHour = hour.toString();
-    let thisTime = currentHour + ":00";
-    console.log("currentTime", thisTime);
-    return new Promise( (resolve, reject) => {
-        $.ajax({
-            url:'https://awesome-land.firebaseio.com/attractions.json'
-        })
-        .done((data)=>{
-            console.log("getCurrentTimeEvents", data);
-        });
-    });
-}
-getCurrentTimeEvents();
+// // Set events based on current time
+// function getCurrentTimeEvents() {
+//     console.log("getCurrentTimeEvents is running");
+//     let currentTime = new Date();
+//     let hour = currentTime.getHours();
+//     let currentHour = hour.toString();
+//     let thisTime = currentHour + ":00";
+//     console.log("currentTime", thisTime);
+//     return new Promise( (resolve, reject) => {
+//         $.ajax({
+//             url:'https://awesome-land.firebaseio.com/attractions.json'
+//         })
+//         .done((data)=>{
+//             console.log("getCurrentTimeEvents", data);
+//         });
+//     });
+// }
+// getCurrentTimeEvents();
 
 
 
@@ -136,7 +183,7 @@ getAjax();
 //get area data
 
 
-},{"./factory":1,"jquery":3}],3:[function(require,module,exports){
+},{"./currentEvents":1,"./factory":2,"jquery":4}],4:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v3.2.1
  * https://jquery.com/
@@ -10391,4 +10438,4 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
-},{}]},{},[2]);
+},{}]},{},[3]);
