@@ -6,13 +6,14 @@ const $ = require('jquery');
 module.exports.getParkInfo = () => {
     return new Promise((resolve, reject) => {
         $.ajax({
-            url: "https://awesome-land.firebaseio.com/areas"
+            url: "https://awesome-land.firebaseio.com/park-info.json"
         }).done( (data) => {
             resolve(data);
             console.log("park info data", data);
     
         }).fail((error) => {
             reject(error);
+            console.log("This is not running correctly");
         });
     });
 };
@@ -20,11 +21,10 @@ module.exports.getParkInfo = () => {
 module.exports.getAreas = () => {
     return new Promise((resolve, reject) => {
         $.ajax({
-            url: "https://awesome-land.firebaseio.com/areas"
+            url: "https://awesome-land.firebaseio.com/areas.json"
         }).done( (data) => {
             resolve(data);
             console.log("area data", data);
-    
         }).fail((error) => {
             reject(error);
         });
@@ -34,7 +34,7 @@ module.exports.getAreas = () => {
 module.exports.getAttractions = () => {
     return new Promise((resolve, reject) => {
         $.ajax({
-            url: "https://awesome-land.firebaseio.com/attractions"
+            url: "https://awesome-land.firebaseio.com/attractions.json"
         }).done( (data) => {
             resolve(data);
             console.log("attraction data", data);
@@ -51,10 +51,12 @@ const factory = require('./factory');
 
 const $ = require('jquery');
 
+factory.getParkInfo();
+factory.getAreas();
+factory.getAttractions();
+
 console.log("Is this working?");
 
-let newTime = new Date(Date.now());
-console.log("newTime", newTime);
 
 // Set current Time within footer
 function setCurrentTime() {
@@ -110,6 +112,28 @@ getCurrentTimeEvents();
 //     console.log("original data", data);
 //     console.log("attractions", data.attractions[0].description);
 // });
+
+
+///Ajax stuff
+ function getAjax(){
+    return new Promise((resolve,reject)=>{
+        $.ajax({
+                url:'https://awesome-land.firebaseio.com/.json'
+            })
+            .done((dataTotal)=>{
+                resolve(dataTotal);
+                console.log("data ready");
+                console.log(dataTotal);
+            })
+            .fail(()=>{
+                reject("Somebody call IT!");
+            });
+    });
+}
+
+getAjax();
+
+//get area data
 
 
 },{"./factory":1,"jquery":3}],3:[function(require,module,exports){

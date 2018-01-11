@@ -4,10 +4,12 @@ const factory = require('./factory');
 
 const $ = require('jquery');
 
+factory.getParkInfo();
+factory.getAreas();
+factory.getAttractions();
+
 console.log("Is this working?");
 
-let newTime = new Date(Date.now());
-console.log("newTime", newTime);
 
 // Set current Time within footer
 function setCurrentTime() {
@@ -63,4 +65,26 @@ getCurrentTimeEvents();
 //     console.log("original data", data);
 //     console.log("attractions", data.attractions[0].description);
 // });
+
+
+///Ajax stuff
+ function getAjax(){
+    return new Promise((resolve,reject)=>{
+        $.ajax({
+                url:'https://awesome-land.firebaseio.com/.json'
+            })
+            .done((dataTotal)=>{
+                resolve(dataTotal);
+                console.log("data ready");
+                console.log(dataTotal);
+            })
+            .fail(()=>{
+                reject("Somebody call IT!");
+            });
+    });
+}
+
+getAjax();
+
+//get area data
 
