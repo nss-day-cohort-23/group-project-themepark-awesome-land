@@ -27,3 +27,12 @@ const $ = require("jquery");
 getAjax();
 
 //get area data
+
+
+$(document).ready(function(){
+    $("#search").keydown(function(e){
+        if(e.which == 13) {
+            console.log("enter");
+        }
+    });
+});
