@@ -8,6 +8,7 @@ module.exports = function(grunt){
       files: ['javascripts/**/*.js'],
     options: {
       predef: ['document', 'console',],
+
       esnext: true,
       globalstrict: true,
       globals: {

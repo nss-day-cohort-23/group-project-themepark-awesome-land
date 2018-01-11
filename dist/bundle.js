@@ -1,24 +1,118 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
 
-console.log("Is this working?");
+const $ = require('jquery');
+
+module.exports.getParkInfo = () => {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: "https://awesome-land.firebaseio.com/areas"
+        }).done( (data) => {
+            resolve(data);
+            console.log("park info data", data);
+    
+        }).fail((error) => {
+            reject(error);
+        });
+    });
+};
+
+module.exports.getAreas = () => {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: "https://awesome-land.firebaseio.com/areas"
+        }).done( (data) => {
+            resolve(data);
+            console.log("area data", data);
+    
+        }).fail((error) => {
+            reject(error);
+        });
+    });
+};
+
+module.exports.getAttractions = () => {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: "https://awesome-land.firebaseio.com/attractions"
+        }).done( (data) => {
+            resolve(data);
+            console.log("attraction data", data);
+    
+        }).fail((error) => {
+            reject(error);
+        });
+    });
+};
+},{"jquery":3}],2:[function(require,module,exports){
+"use strict";
+
+const factory = require('./factory');
 
 const $ = require('jquery');
 
-let currentTime = new Date();
-let hours = currentTime.getHours();
-let minutes = currentTime.getMinutes();
-let date = currentTime.getDate();
-let morn = "AM";
+console.log("Is this working?");
 
-if (hours > 12) {
-    hours = hours - 12;
-    morn = "PM";
-    let footerTime = hours + ":" + minutes + " " + morn;
+let newTime = new Date(Date.now());
+console.log("newTime", newTime);
+
+// Set current Time within footer
+function setCurrentTime() {
+    // Variables to set date info
+    let currentTime = new Date();
+    let hours = currentTime.getHours();
+    let minutes = currentTime.getMinutes();
+    let day = currentTime.getDay();
+    let morn = "AM";
+    if (hours > 12) {
+        hours = hours - 12;
+        morn = "PM";
+    } else if (hours === 24) {
+        hours = 0;
+    }
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+    let currentEventTime = hours + ":" + minutes + morn;
+    let dayArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]; 
+    let footerTime = dayArr[day] + " " + currentEventTime;
     $("#currentTime").html(footerTime);
 }
 
-},{"jquery":2}],2:[function(require,module,exports){
+setCurrentTime();
+setInterval( setCurrentTime, 1000);
+
+// Set events based on current time
+function getCurrentTimeEvents() {
+    console.log("getCurrentTimeEvents is running");
+    let currentTime = new Date();
+    let hour = currentTime.getHours();
+    let currentHour = hour.toString();
+    let thisTime = currentHour + ":00";
+    console.log("currentTime", thisTime);
+    return new Promise( (resolve, reject) => {
+        $.ajax({
+            url:'https://awesome-land.firebaseio.com/attractions.json'
+        })
+        .done((data)=>{
+            console.log("getCurrentTimeEvents", data);
+        });
+    });
+}
+getCurrentTimeEvents();
+
+
+
+// $.ajax({
+//     url:'https://awesome-land.firebaseio.com/.json'
+// })
+// .done((data)=>{
+//     console.log("original data", data);
+//     console.log("attractions", data.attractions[0].description);
+// });
+
+
+},{"./factory":1,"jquery":3}],3:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v3.2.1
  * https://jquery.com/
@@ -10273,4 +10367,4 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
-},{}]},{},[1]);
+},{}]},{},[2]);
