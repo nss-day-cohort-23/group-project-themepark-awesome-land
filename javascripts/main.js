@@ -1,13 +1,29 @@
 "use strict";
-console.log("working");
+
+console.log("Gruntworking");
 
 const $ = require("jquery");
 
 
- 
- $.ajax({
-        url:'https://awesome-land.firebaseio.com/.json'
-    })
-    .done((data)=>{
-        console.log(data);
+
+
+///Ajax stuff
+ function getAjax(){
+    return new Promise((resolve,reject)=>{
+        $.ajax({
+                url:'https://awesome-land.firebaseio.com/.json'
+            })
+            .done((dataTotal)=>{
+                resolve(dataTotal);
+                console.log("data ready");
+                console.log(dataTotal);
+            })
+            .fail(()=>{
+                reject("Somebody call IT!");
+            });
     });
+}
+
+getAjax();
+
+//get area data
