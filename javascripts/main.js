@@ -1,14 +1,14 @@
 "use strict";
 
 const factory = require('./factory');
-
+const areaToDom = require('./areaToDom');
 const $ = require('jquery');
 
 factory.getParkInfo();
 factory.getAreas();
 factory.getAttractions();
 
-console.log("Is this working?");
+// console.log("Is this working?");
 
 
 // Set current Time within footer
@@ -44,7 +44,7 @@ function getCurrentTimeEvents() {
     let hour = currentTime.getHours();
     let currentHour = hour.toString();
     let thisTime = currentHour + ":00";
-    console.log("currentTime", thisTime);
+    // console.log("currentTime", thisTime);
     return new Promise( (resolve, reject) => {
         $.ajax({
             url:'https://awesome-land.firebaseio.com/attractions.json'
@@ -67,24 +67,5 @@ getCurrentTimeEvents();
 // });
 
 
-///Ajax stuff
- function getAjax(){
-    return new Promise((resolve,reject)=>{
-        $.ajax({
-                url:'https://awesome-land.firebaseio.com/.json'
-            })
-            .done((dataTotal)=>{
-                resolve(dataTotal);
-                console.log("data ready");
-                console.log(dataTotal);
-            })
-            .fail(()=>{
-                reject("Somebody call IT!");
-            });
-    });
-}
 
-getAjax();
-
-//get area data
 
