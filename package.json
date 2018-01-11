@@ -12,6 +12,7 @@
     "hbsfy": "^2.7.0",
     "jquery": "^3.1.0",
     "jshint": "^2.9.1",
+    "lodash": "^4.17.4",
     "matchdep": "^0.3.0"
   },
   "description": "As a team you will create a interactive map of a theme park. The park will include 8 areas with different attractions and events.",

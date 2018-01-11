@@ -113,18 +113,18 @@ $(document).ready(function(){
     });
 });
 
-
 //loop over matching attractions array and find the area_id key
+var _ = require('lodash');
+
 var idArr = [];
 function getAreaID(attractionArr) {
     attractionArr.forEach(function(e){
     idArr.push(e.area_id);
-    console.log(idArr);
+    console.log(_.uniqBy(idArr)); 
+    return idArr;
 });
 }
 // use area_id to give a class to area section, or to toggle highlight class
-
-
 
 
 
