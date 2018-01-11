@@ -68,23 +68,23 @@ setInterval( setCurrentTime, 1000);
 
 
 ///Ajax stuff
- function getAjax(){
-    return new Promise((resolve,reject)=>{
-        $.ajax({
-                url:'https://awesome-land.firebaseio.com/.json'
-            })
-            .done((dataTotal)=>{
-                resolve(dataTotal);
-                console.log("data ready");
-                console.log(dataTotal);
-            })
-            .fail(()=>{
-                reject("Somebody call IT!");
-            });
-    });
-}
+//  function getAjax(){
+//     return new Promise((resolve,reject)=>{
+//         $.ajax({
+//                 url:'https://awesome-land.firebaseio.com/.json'
+//             })
+//             .done((dataTotal)=>{
+//                 resolve(dataTotal);
+//                 console.log("data ready");
+//                 console.log(dataTotal);
+//             })
+//             .fail(()=>{
+//                 reject("Somebody call IT!");
+//             });
+//     });
+// }
 
-getAjax();
+// getAjax();
 
 //get area data
 

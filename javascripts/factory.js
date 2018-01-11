@@ -36,7 +36,7 @@ module.exports.getAttractions = () => {
             url: "https://awesome-land.firebaseio.com/attractions.json"
         }).done( (data) => {
             resolve(data);
-            console.log("attraction data", data);
+            // console.log("attraction data", data);
     
         }).fail((error) => {
             reject(error);

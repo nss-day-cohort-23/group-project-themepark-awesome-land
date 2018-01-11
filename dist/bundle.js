@@ -1,51 +1,78 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+// import { getAttractions } from './factory';
+
 "use strict";
 
 const $ = require('jquery');
 const factory = require('./factory');
+const formatter = require('./formatter');
 
 factory.getAttractions();
 
+// console.log("attraction.times[i].area_id", attraction.times[i].area_id);
+
 // Set events based on current time
-function getCurrentTimeEvents(data) {
-    console.log("getCurrentTimeEvents is running");
-    let currentTime = new Date();
-    let hour = currentTime.getHours();
-    let currentHour = hour.toString();
-    let thisTime = currentHour;
-    console.log("currentTime", thisTime);
-}
-getCurrentTimeEvents();
+// function getCurrentTimeEvents(data) {
+//     console.log("getCurrentTimeEvents is running");
+//     let currentTime = new Date();
+//     let hour = currentTime.getHours();
+//     let currentHour = hour.toString();
+//     let thisTime = currentHour;
+//     console.log("currentTime", thisTime);
+// }
+// getCurrentTimeEvents();
 
 factory.getAttractions().then(data => {
     console.log("getAttractions is running", data);
-    let currentArr = [];
+    // let currentArr = [];
     let currentTime = new Date();
-    let thisHour = currentTime.getHours().toString();
-    console.log("thisHour", thisHour);
-    console.log(typeof thisHour);
+    let thisHour = currentTime.getHours();
+    if (thisHour > 12) {
+        thisHour = thisHour - 12;
+    }
+    if (thisHour === 1) {
+        thisHour = thisHour + ":";
+    }
+    let stringHour = thisHour.toString();
+    console.log("stringHour", stringHour);
+    let promiseArr = [];
     data.forEach( attraction => {
         if (attraction.times) {
         let attractionTimeLength = attraction.times;
-        console.log("attraction time", attraction.times);
-        for(let i=0; i < attractionTimeLength.length; i++) {
-            if(attraction.times[i].startsWith(thisHour)) {
-                console.log("Please", attraction);
-            }
-        }
+        // console.log("attraction time", attraction.times);
+            for(let i=0; i < attractionTimeLength.length; i++) {
+                if(attraction.times[i].startsWith(stringHour)) {
+                    let attracId = attraction.area_id;
+                    // let getNameVar = formatter.getAreaName(attracId)
+                    console.log("Events taking place this hour", attraction);
+                    console.log("attraction.area_id", attraction.area_id);
+                    console.log(typeof attraction.area_id);
+                    promiseArr.push(formatter.getAreaName(attracId));
+                    console.log("promiseArr", promiseArr);
 
+                    // call a function whose job it is to call firebase for that specific attractions area. attraction.time.length[i]
+
+
+                    // $("#sidebarContent").append(`<li>${attraction.name} (${attraction.area_id})</li>`);
+                }
+
+            }
+            return Promise.all(promiseArr).then( data => {
+                console.log("promise all", data);
+            });
         }
-        // let eventsNow = attraction.times.filter( hour => {
-        //     if (hour.includes(thisHour));
-        //     console.log("hour", hour);
-        // });
     });
 });
 
+// formatter.getAreaName();
+
+
+// in new function pull out the area for that function. When the object comes back grab the name and add it to the object
 
 
 
-},{"./factory":2,"jquery":4}],2:[function(require,module,exports){
+
+},{"./factory":2,"./formatter":3,"jquery":5}],2:[function(require,module,exports){
 "use strict";
 
 const $ = require('jquery');
@@ -84,14 +111,45 @@ module.exports.getAttractions = () => {
             url: "https://awesome-land.firebaseio.com/attractions.json"
         }).done( (data) => {
             resolve(data);
-            console.log("attraction data", data);
+            // console.log("attraction data", data);
     
         }).fail((error) => {
             reject(error);
         });
     });
 };
-},{"jquery":4}],3:[function(require,module,exports){
+},{"jquery":5}],3:[function(require,module,exports){
+"use strict";
+
+const $ = require('jquery');
+const factory = require('./factory');
+
+module.exports.getAreaName = (attractionAreaId) => {
+    return new Promise((resolve, reject) => {
+        console.log("getAreaName is running");
+        $.ajax({
+            url: `https://awesome-land.firebaseio.com/areas.json?orderBy="id"&equalTo=${attractionAreaId}`
+        }).done( (data) => {
+            let getterAreaID = attractionAreaId - 1;
+            console.log("Attraction Area ID name", data[getterAreaID].name);
+            resolve(data);
+            
+
+        }).fail((error) => {
+            reject(error);
+            console.log("This is not running correctly");
+        });
+    });
+};
+
+
+
+
+
+
+
+
+},{"./factory":2,"jquery":5}],4:[function(require,module,exports){
 "use strict";
 
 const factory = require('./factory');
@@ -162,28 +220,28 @@ setInterval( setCurrentTime, 1000);
 
 
 ///Ajax stuff
- function getAjax(){
-    return new Promise((resolve,reject)=>{
-        $.ajax({
-                url:'https://awesome-land.firebaseio.com/.json'
-            })
-            .done((dataTotal)=>{
-                resolve(dataTotal);
-                console.log("data ready");
-                console.log(dataTotal);
-            })
-            .fail(()=>{
-                reject("Somebody call IT!");
-            });
-    });
-}
+//  function getAjax(){
+//     return new Promise((resolve,reject)=>{
+//         $.ajax({
+//                 url:'https://awesome-land.firebaseio.com/.json'
+//             })
+//             .done((dataTotal)=>{
+//                 resolve(dataTotal);
+//                 console.log("data ready");
+//                 console.log(dataTotal);
+//             })
+//             .fail(()=>{
+//                 reject("Somebody call IT!");
+//             });
+//     });
+// }
 
-getAjax();
+// getAjax();
 
 //get area data
 
 
-},{"./currentEvents":1,"./factory":2,"jquery":4}],4:[function(require,module,exports){
+},{"./currentEvents":1,"./factory":2,"jquery":5}],5:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v3.2.1
  * https://jquery.com/
@@ -10438,4 +10496,4 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
-},{}]},{},[3]);
+},{}]},{},[4]);
