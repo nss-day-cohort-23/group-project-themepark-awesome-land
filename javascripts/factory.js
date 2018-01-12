@@ -8,7 +8,7 @@ module.exports.getParkInfo = () => {
             url: "https://awesome-land.firebaseio.com/park-info.json"
         }).done( (data) => {
             resolve(data);
-            console.log("park info data", data);
+            // console.log("park info data", data);
     
         }).fail((error) => {
             reject(error);

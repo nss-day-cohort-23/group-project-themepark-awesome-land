@@ -22,7 +22,7 @@ factory.getAttractions();
 // getCurrentTimeEvents();
 
 factory.getAttractions().then(data => {
-    console.log("getAttractions is running", data);
+    // console.log("getAttractions is running", data);
     // let currentArr = [];
     let currentTime = new Date();
     let thisHour = currentTime.getHours();
@@ -33,7 +33,7 @@ factory.getAttractions().then(data => {
         thisHour = thisHour + ":";
     }
     let stringHour = thisHour.toString();
-    console.log("stringHour", stringHour);
+    // console.log("stringHour", stringHour);
     let promiseArr = [];
     data.forEach( attraction => {
         if (attraction.times) {
@@ -43,21 +43,20 @@ factory.getAttractions().then(data => {
                 if(attraction.times[i].startsWith(stringHour)) {
                     let attracId = attraction.area_id;
                     // let getNameVar = formatter.getAreaName(attracId)
-                    console.log("Events taking place this hour", attraction);
-                    console.log("attraction.area_id", attraction.area_id);
-                    console.log(typeof attraction.area_id);
+                    // console.log("Events taking place this hour", attraction);
+                    // console.log("attraction.area_id", attraction.area_id);
+                    // console.log(typeof attraction.area_id);
                     promiseArr.push(formatter.getAreaName(attracId));
                     console.log("promiseArr", promiseArr);
 
                     // call a function whose job it is to call firebase for that specific attractions area. attraction.time.length[i]
 
 
-                    // $("#sidebarContent").append(`<li>${attraction.name} (${attraction.area_id})</li>`);
+                    $("#sidebarContent").append(`<li>${attraction.name} (${attraction.area_id})</li>`);
                 }
-
             }
             return Promise.all(promiseArr).then( data => {
-                console.log("promise all", data);
+            console.log("promise all", data);
             });
         }
     });

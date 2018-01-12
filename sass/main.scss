@@ -1,12 +1,39 @@
+header {
+    z-index: 1;
+    position: fixed;
+    width: 100%;
+    height: 5em;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+}
+
+h1{
+    align-content: center;
+}
+
+#logo{
+    width: 200px;
+    height: 90px;
+    z-index: 1;
+}
+
+#dropdownMenuButton{
+    margin: 20px;
+}
+
 footer {
     background-color: lightgrey;
     border: 1px black solid;
-    ul {
+    div {
         list-style:  none;
         color: black;
         text-align: center;
     }
 }
+
 
 .side30 {
     width: 30%;

@@ -9,19 +9,19 @@
     <title>Document</title>
 </head>
 <body>
-    <header>
+    <div>
         <nav class="awesomeNav">
             <div>
-                <img src="image/awesome-land.png" alt="Awesome Land's Awesome Logo">
+                <img src="image/AL-Logo.png" alt="Awesome Land's Awesome Logo">
             </div>
             <h1>Awesome Land!</h1>
-            <div>
-                <form class="form-inline">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                </form>
-            </div>
+            
+                <div class="form-inline">
+                    <input id="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                </div>
+            
             <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button id"dropdownMenuButton" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Attraction Schedule
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -41,6 +41,7 @@
                 <div class="countryContainer"></div>
             </div>
         </nav>
+    </div>
         <div class="side30">
             <div>
                 <h4>Events Happening Around The Park:</h4>
@@ -50,15 +51,8 @@
     </body>
     <footer>
         <div id="footerDiv">
-            <ul>
-                <li id="currentTime">
-                </li>
-                <li>
-                    &copy Awesome Land, Inc
-                </li>
-            </ul>
-        </div>
-
+            <div>&copy Awesome Land, Inc</div>
+            <div id="currentTime"></div>
     </footer>
         
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
