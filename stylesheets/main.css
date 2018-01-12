@@ -42,7 +42,7 @@ footer {
   background-color: rgba(203, 214, 41, 0.699);
   grid-template-areas: "a1 a2 a3" "a4 . a5" "a6 a7 a8";
   border: 2px solid black;
-  margin: 20px;
+  margin: auto;
   padding: 10px;
   height: 600px;
   width: 600px; }
@@ -54,31 +54,31 @@ footer {
   font-size: 25px;
   text-align: center; }
 
-#area1 {
+.area1 {
   grid-area: a1; }
 
-#area2 {
+.area2 {
   grid-area: a2; }
 
-#area3 {
+.area3 {
   grid-area: a3; }
 
-#area4 {
+.area4 {
   grid-area: a4; }
 
-#area5 {
+.area5 {
   grid-area: a5; }
 
-#area6 {
+.area6 {
   grid-area: a6; }
 
-#area7 {
+.area7 {
   grid-area: a7; }
 
-#area8 {
+.area8 {
   grid-area: a8; }
 
-#area9 {
+.area9 {
   grid-area: a9; }
 
 .highlight {

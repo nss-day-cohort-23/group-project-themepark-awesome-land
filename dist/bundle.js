@@ -23,7 +23,7 @@ module.exports.outputArea = ()=>{
             let areaName = data.name;
             let areaId = data.id;
             // let mapDiv = document.createElement("div");
-            $("#areaContainer").append(`<div class ="area" id = area${areaId}>${areaName}</div>`);
+            $("#areaContainer").append(`<div class ="area area${areaId}" id =${areaId}>${areaName}</div>`);
         });
     });
 };
@@ -56,7 +56,7 @@ factory.getAttractions().then(data => {
             for(let i=0; i < attractionTimeLength.length; i++) {
                 if(attraction.times[i].startsWith(stringHour)) {
                     let attracId = attraction.area_id;
-                    console.log("formatter.getAreaName(attracId) with then", formatter.getAreaName(attracId).then( areaName => areaName));
+                    // console.log("formatter.getAreaName(attracId) with then", formatter.getAreaName(attracId).then( areaName => areaName));
                     // call a function whose job it is to call firebase for that specific attractions area. attraction.time.length[i]
                     $("#sidebarContent").append(`<li class="attractionName">${attraction.name} <span>(${formatter.getAreaName(attracId).then( areaName => areaName)})</span></li>`);
                 }
@@ -175,20 +175,22 @@ areaToDom.outputArea();
 // const areaToDom = require('./areaToDom');
 
 $(".countryContainer").click( () => {
+    $("#sidebarContent").html('');
     let areaAttractionArr = [];
     let clickedArea = +event.target.id;
+    console.log("area clicked", +event.target.id);
     factory.getAttractions().then( data => {
         data.forEach( attraction => {
             if ( clickedArea === attraction.area_id) {
                 areaAttractionArr.push(attraction);
-                // return areaAttractionArr;
-                for (let i = 0; i < areaAttractionArr.length; i++) {
-                    $("#sidebarContent").html(`<li class="attractionName">${areaAttractionArr[i].name}<li>`);
-                    console.log("clicked area attraction array", areaAttractionArr[i]);
-                 }
+                // console.log("clicked area attraction array", areaAttractionArr[i]);
             }
         });
+        for (let i = 0; i < areaAttractionArr.length; i++) {
+            $("#sidebarContent").append(`<li class="attractionName">${areaAttractionArr[i].name}<li>`);
+        }
     });
+    console.log("Attractions in the area", areaAttractionArr);
 });
 
 // console.log("clicked area attraction array", areaAttractionArr);

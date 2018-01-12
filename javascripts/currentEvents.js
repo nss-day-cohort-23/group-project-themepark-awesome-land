@@ -24,7 +24,7 @@ factory.getAttractions().then(data => {
             for(let i=0; i < attractionTimeLength.length; i++) {
                 if(attraction.times[i].startsWith(stringHour)) {
                     let attracId = attraction.area_id;
-                    console.log("formatter.getAreaName(attracId) with then", formatter.getAreaName(attracId).then( areaName => areaName));
+                    // console.log("formatter.getAreaName(attracId) with then", formatter.getAreaName(attracId).then( areaName => areaName));
                     // call a function whose job it is to call firebase for that specific attractions area. attraction.time.length[i]
                     $("#sidebarContent").append(`<li class="attractionName">${attraction.name} <span>(${formatter.getAreaName(attracId).then( areaName => areaName)})</span></li>`);
                 }

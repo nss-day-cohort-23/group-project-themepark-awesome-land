@@ -22,7 +22,7 @@ module.exports.outputArea = ()=>{
             let areaName = data.name;
             let areaId = data.id;
             // let mapDiv = document.createElement("div");
-            $("#areaContainer").append(`<div class ="area" id = area${areaId}>${areaName}</div>`);
+            $("#areaContainer").append(`<div class ="area area${areaId}" id =${areaId}>${areaName}</div>`);
         });
     });
 };
