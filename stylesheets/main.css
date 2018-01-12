@@ -22,9 +22,18 @@ h1 {
 footer {
   background-color: lightgrey;
   border: 1px black solid; }
-  footer ul {
+  footer div {
     list-style: none;
     color: black;
     text-align: center; }
+
+.sidebarLists li {
+  list-style: none;
+  color: black;
+  font-size: .85em; }
+
+.infoContainer {
+  margin-left: 10px;
+  margin-bottom: 1px; }
 
 /*# sourceMappingURL=main.css.map */

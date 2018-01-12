@@ -9,16 +9,15 @@
     <title>Document</title>
 </head>
 <body>
+    <div>
         <nav class="awesomeNav">
             <div>
                 <img src="image/AL-Logo.png" alt="Awesome Land's Awesome Logo">
             </div>
             <h1>Awesome Land!</h1>
-            
                 <div class="form-inline">
                     <input id="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 </div>
-            
             <div class="dropdown">
                 <button id"dropdownMenuButton" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Attraction Schedule
@@ -39,19 +38,28 @@
                 </div>
             </div>
         </nav>
-        <div class="countryContainer"></div>
-    </body>
+    </div>
+    <div class="companyInfo"></div>
+    <br>
+    <div class="infoContainer">
+        <div class="row">
+            <div class="col-4" id="side30">
+                <div>
+                    <h4>Events Happening Around The Park:</h4>
+                    <div class="sidebarLists" id="sidebarContent"></div>
+                </div>
+            </div>
+            <div class="col-8" id="mapArea">
+                <h4>Map</h4>
+                <div class="countryContainer"></div>
+            </div>
+        </div>
+    </div>
     <footer>
         <div id="footerDiv">
-            <ul>
-                <li id="currentTime">
-                </li>
-                <li>
-                    &copy Awesome Land, Inc
-                </li>
-            </ul>
+            <div>&copy Awesome Land, Inc</div>
+            <div id="currentTime"></div>
         </div>
-
     </footer>
         
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -60,5 +68,7 @@
 
 
     <script src="dist/bundle.js"></script>
-    </html>
+</body>
+</html>
+
 

@@ -27,10 +27,27 @@ h1{
 footer {
     background-color: lightgrey;
     border: 1px black solid;
-    ul {
+    div {
         list-style:  none;
         color: black;
         text-align: center;
     }
 }
 
+
+.sidebarLists li {
+    list-style: none;
+    color: black;
+    font-size: .85em;
+}
+
+.infoContainer {
+    // border: 3px solid black;
+    margin-left: 10px;
+    margin-bottom: 1px;
+
+}
+
+// .attractionName {
+//     font-weight: bold;
+// }

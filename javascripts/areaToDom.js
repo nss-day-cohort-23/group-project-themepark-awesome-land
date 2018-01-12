@@ -13,6 +13,6 @@ module.exports.outputArea = ()=>{
             $(".countryContainer").append(`<div class ="areas" id = ${areaId}>${areaName}</div>`);
         });
     });
-}
+};
 
     
