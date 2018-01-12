@@ -10,10 +10,8 @@ module.exports.getAreaName = (attractionAreaId) => {
             url: `https://awesome-land.firebaseio.com/areas.json?orderBy="id"&equalTo=${attractionAreaId}`
         }).done( (data) => {
             let getterAreaID = attractionAreaId - 1;
-            console.log("Attraction Area ID name", data[getterAreaID].name);
-            resolve(data);
-            
-
+            console.log("Promise Attraction Area ID name", data[getterAreaID].name);
+            resolve(data[getterAreaID].name);
         }).fail((error) => {
             reject(error);
             console.log("This is not running correctly");

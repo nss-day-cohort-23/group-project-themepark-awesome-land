@@ -1,29 +1,13 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-// import { getAttractions } from './factory';
-
 "use strict";
 
 const $ = require('jquery');
 const factory = require('./factory');
 const formatter = require('./formatter');
 
-factory.getAttractions();
-
-// console.log("attraction.times[i].area_id", attraction.times[i].area_id);
-
-// Set events based on current time
-// function getCurrentTimeEvents(data) {
-//     console.log("getCurrentTimeEvents is running");
-//     let currentTime = new Date();
-//     let hour = currentTime.getHours();
-//     let currentHour = hour.toString();
-//     let thisTime = currentHour;
-//     console.log("currentTime", thisTime);
-// }
-// getCurrentTimeEvents();
+// factory.getAttractions();
 
 factory.getAttractions().then(data => {
-    // console.log("getAttractions is running", data);
     // let currentArr = [];
     let currentTime = new Date();
     let thisHour = currentTime.getHours();
@@ -34,31 +18,23 @@ factory.getAttractions().then(data => {
         thisHour = thisHour + ":";
     }
     let stringHour = thisHour.toString();
-    // console.log("stringHour", stringHour);
-    let promiseArr = [];
+    // let promiseArr = [];
     data.forEach( attraction => {
         if (attraction.times) {
         let attractionTimeLength = attraction.times;
-        // console.log("attraction time", attraction.times);
             for(let i=0; i < attractionTimeLength.length; i++) {
                 if(attraction.times[i].startsWith(stringHour)) {
                     let attracId = attraction.area_id;
-                    // let getNameVar = formatter.getAreaName(attracId)
-                    // console.log("Events taking place this hour", attraction);
-                    // console.log("attraction.area_id", attraction.area_id);
-                    // console.log(typeof attraction.area_id);
-                    promiseArr.push(formatter.getAreaName(attracId));
-                    console.log("promiseArr", promiseArr);
-
+                    // promiseArr.push(formatter.getAreaName(attracId));
+                    // console.log("promiseArr", promiseArr);
+                    console.log("formatter.getAreaName(attracId) with then", formatter.getAreaName(attracId));
                     // call a function whose job it is to call firebase for that specific attractions area. attraction.time.length[i]
-
-
-                    $("#sidebarContent").append(`<li>${attraction.name} (${attraction.area_id})</li>`);
+                    $("#sidebarContent").append(`<li>${attraction.name} (${formatter.getAreaName(attracId).then( areaName => areaName)})</li>`);
                 }
             }
-            return Promise.all(promiseArr).then( data => {
-            console.log("promise all", data);
-            });
+            // return Promise.all(promiseArr).then( data => {
+            // console.log("promise all", data);
+            // });
         }
     });
 });
@@ -130,10 +106,8 @@ module.exports.getAreaName = (attractionAreaId) => {
             url: `https://awesome-land.firebaseio.com/areas.json?orderBy="id"&equalTo=${attractionAreaId}`
         }).done( (data) => {
             let getterAreaID = attractionAreaId - 1;
-            console.log("Attraction Area ID name", data[getterAreaID].name);
-            resolve(data);
-            
-
+            console.log("Promise Attraction Area ID name", data[getterAreaID].name);
+            resolve(data[getterAreaID].name);
         }).fail((error) => {
             reject(error);
             console.log("This is not running correctly");
@@ -262,7 +236,8 @@ const $ = require('jquery');
 const factory = require('./factory');
 
 factory.getParkInfo().then( data => {
-    console.log("get parking info then data", data[0].description);
+    console.log("opening", data[0].operating_hours[0].opening);
+    $("#sidebarContent").append(`<li> ${data[0].location} </li><li> Open: ${data[0].operating_hours[0].opening}:00AM to </li><li>${data[0].operating_hours[0].closing}:00PM</li>`);
 });
 },{"./factory":2,"jquery":6}],6:[function(require,module,exports){
 /*!
