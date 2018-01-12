@@ -27,7 +27,13 @@ footer {
     color: black;
     text-align: center; }
 
-.side30 {
-  width: 30%; }
+.sidebarLists li {
+  list-style: none;
+  color: black;
+  font-size: .85em; }
+
+.infoContainer {
+  margin-left: 10px;
+  margin-bottom: 1px; }
 
 /*# sourceMappingURL=main.css.map */

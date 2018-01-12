@@ -4,12 +4,22 @@ const factory = require('./factory');
 const formatter = require('./formatter');
 const parkInfo = require('./parkInfo');
 const currentEvents = require('./currentEvents');
-
-// const areaToDom = require('./areaToDom');
+const areaToDom = require('./areaToDom');
 
 const $ = require('jquery');
 
+factory.getParkInfo();
+factory.getAreas();
+factory.getAttractions();
+// factory.areaToDom();
+areaToDom.outputArea();
+
+// const areaToDom = require('./areaToDom');
+
+
+
 function setCurrentTime() {
+    console.log("set current time is running");
     let currentTime = new Date();
     let day = currentTime.getDate();
     // +1 to the month because Jan = 0.

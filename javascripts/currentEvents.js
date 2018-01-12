@@ -28,7 +28,7 @@ factory.getAttractions().then(data => {
                     // console.log("promiseArr", promiseArr);
                     console.log("formatter.getAreaName(attracId) with then", formatter.getAreaName(attracId));
                     // call a function whose job it is to call firebase for that specific attractions area. attraction.time.length[i]
-                    $("#sidebarContent").append(`<li>${attraction.name} (${formatter.getAreaName(attracId).then( areaName => areaName)})</li>`);
+                    $("#sidebarContent").append(`<li class="attractionName">${attraction.name} <span>(${formatter.getAreaName(attracId).then( areaName => areaName)})</span></li>`);
                 }
             }
             // return Promise.all(promiseArr).then( data => {

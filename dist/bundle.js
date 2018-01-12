@@ -1,6 +1,25 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
 
+let factory = require("./factory");
+const $ = require('jquery');
+
+
+
+module.exports.outputArea = ()=>{
+    factory.getAreas().then((data)=>{
+        data.forEach(data => {
+            let areaName = data.name;
+            let areaId = data.id;
+            $(".countryContainer").append(`<div class ="areas" id = ${areaId}>${areaName}</div>`);
+        });
+    });
+};
+
+    
+},{"./factory":3,"jquery":7}],2:[function(require,module,exports){
+"use strict";
+
 const $ = require('jquery');
 const factory = require('./factory');
 const formatter = require('./formatter');
@@ -29,7 +48,7 @@ factory.getAttractions().then(data => {
                     // console.log("promiseArr", promiseArr);
                     console.log("formatter.getAreaName(attracId) with then", formatter.getAreaName(attracId));
                     // call a function whose job it is to call firebase for that specific attractions area. attraction.time.length[i]
-                    $("#sidebarContent").append(`<li>${attraction.name} (${formatter.getAreaName(attracId).then( areaName => areaName)})</li>`);
+                    $("#sidebarContent").append(`<li class="attractionName">${attraction.name} <span>(${formatter.getAreaName(attracId).then( areaName => areaName)})</span></li>`);
                 }
             }
             // return Promise.all(promiseArr).then( data => {
@@ -47,7 +66,7 @@ factory.getAttractions().then(data => {
 
 
 
-},{"./factory":2,"./formatter":3,"jquery":6}],2:[function(require,module,exports){
+},{"./factory":3,"./formatter":4,"jquery":7}],3:[function(require,module,exports){
 "use strict";
 
 const $ = require('jquery');
@@ -93,7 +112,7 @@ module.exports.getAttractions = () => {
         });
     });
 };
-},{"jquery":6}],3:[function(require,module,exports){
+},{"jquery":7}],4:[function(require,module,exports){
 "use strict";
 
 const $ = require('jquery');
@@ -124,19 +143,29 @@ module.exports.getAreaName = (attractionAreaId) => {
 
 
 
-},{"./factory":2,"jquery":6}],4:[function(require,module,exports){
+},{"./factory":3,"jquery":7}],5:[function(require,module,exports){
 "use strict";
 
 const factory = require('./factory');
 const formatter = require('./formatter');
 const parkInfo = require('./parkInfo');
 const currentEvents = require('./currentEvents');
-
-// const areaToDom = require('./areaToDom');
+const areaToDom = require('./areaToDom');
 
 const $ = require('jquery');
 
+factory.getParkInfo();
+factory.getAreas();
+factory.getAttractions();
+// factory.areaToDom();
+areaToDom.outputArea();
+
+// const areaToDom = require('./areaToDom');
+
+
+
 function setCurrentTime() {
+    console.log("set current time is running");
     let currentTime = new Date();
     let day = currentTime.getDate();
     // +1 to the month because Jan = 0.
@@ -229,7 +258,7 @@ function getAreaID(attractionArr) {
 
 
 
-},{"./currentEvents":1,"./factory":2,"./formatter":3,"./parkInfo":5,"jquery":6,"lodash":7}],5:[function(require,module,exports){
+},{"./areaToDom":1,"./currentEvents":2,"./factory":3,"./formatter":4,"./parkInfo":6,"jquery":7,"lodash":8}],6:[function(require,module,exports){
 "use strict";
 
 const $ = require('jquery');
@@ -239,7 +268,7 @@ factory.getParkInfo().then( data => {
     console.log("opening", data[0].operating_hours[0].opening);
     $("#sidebarContent").append(`<li> ${data[0].location} </li><li> Open: ${data[0].operating_hours[0].opening}:00AM to </li><li>${data[0].operating_hours[0].closing}:00PM</li>`);
 });
-},{"./factory":2,"jquery":6}],6:[function(require,module,exports){
+},{"./factory":3,"jquery":7}],7:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v3.2.1
  * https://jquery.com/
@@ -10494,7 +10523,7 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 (function (global){
 /*!
  * Lo-Dash v0.9.2 <http://lodash.com>
@@ -14756,4 +14785,4 @@ return jQuery;
 }(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}]},{},[4]);
+},{}]},{},[5]);
