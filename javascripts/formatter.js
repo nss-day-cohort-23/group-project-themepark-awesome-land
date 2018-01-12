@@ -19,6 +19,8 @@ module.exports.getAreaName = (attractionAreaId) => {
     });
 };
 
+
+
 // 
 
 

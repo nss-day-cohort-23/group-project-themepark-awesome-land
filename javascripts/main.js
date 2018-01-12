@@ -16,6 +16,26 @@ areaToDom.outputArea();
 
 // const areaToDom = require('./areaToDom');
 
+$(".countryContainer").click( () => {
+    let areaAttractionArr = [];
+    let clickedArea = +event.target.id;
+    factory.getAttractions().then( data => {
+        data.forEach( attraction => {
+            if ( clickedArea === attraction.area_id) {
+                areaAttractionArr.push(attraction);
+                // return areaAttractionArr;
+                for (let i = 0; i < areaAttractionArr.length; i++) {
+                    $("#sidebarContent").html(`<li class="attractionName">${areaAttractionArr[i].name}<li>`);
+                    console.log("clicked area attraction array", areaAttractionArr[i]);
+                 }
+            }
+        });
+    });
+});
+
+// console.log("clicked area attraction array", areaAttractionArr);
+
+
 
 
 function setCurrentTime() {
