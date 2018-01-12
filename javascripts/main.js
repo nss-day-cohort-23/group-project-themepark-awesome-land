@@ -7,6 +7,7 @@ const $ = require('jquery');
 factory.getParkInfo();
 factory.getAreas();
 factory.getAttractions();
+factory.areaToDom();
 
 // console.log("Is this working?");
 
