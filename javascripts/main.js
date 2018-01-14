@@ -20,25 +20,28 @@ attractionToDom.attractionByArea();
 
 // const areaToDom = require('./areaToDom');
 
+
+
 // Show an area's attractions when clicked
-$(".countryContainer").click( () => {
-    $("#sidebarContent").html('');
-    let areaAttractionArr = [];
-    let clickedArea = +event.target.id;
-    console.log("area clicked", +event.target.id);
-    factory.getAttractions().then( data => {
-        data.forEach( attraction => {
-            if ( clickedArea === attraction.area_id) {
-                areaAttractionArr.push(attraction);
-                // console.log("clicked area attraction array", areaAttractionArr[i]);
-            }
-        });
-        for (let i = 0; i < areaAttractionArr.length; i++) {
-            $("#sidebarContent").append(`<div class="attractionName" id="attraction${areaAttractionArr[i].id}"><div>${areaAttractionArr[i].name}</div><div class="hidden" id="attraction${areaAttractionArr[i].id}"><p>${areaAttractionArr[i].description}</p></div></div>`);
-        }
-    });
-    console.log("Attractions in the area", areaAttractionArr);
-});
+
+// $(".countryContainer").click( () => {
+//     $("#sidebarContent").html('');
+//     let areaAttractionArr = [];
+//     let clickedArea = +event.target.id;
+//     console.log("area clicked", +event.target.id);
+//     factory.getAttractions().then( data => {
+//         data.forEach( attraction => {
+//             if ( clickedArea === attraction.area_id) {
+//                 areaAttractionArr.push(attraction);
+//                 // console.log("clicked area attraction array", areaAttractionArr[i]);
+//             }
+//         });
+//         for (let i = 0; i < areaAttractionArr.length; i++) {
+//             $("#sidebarContent").append(`<div class="attractionName" id="attraction${areaAttractionArr[i].id}"><div>${areaAttractionArr[i].name}</div><div class="hidden" id="attraction${areaAttractionArr[i].id}"><p>${areaAttractionArr[i].description}</p></div></div>`);
+//         }
+//     });
+//     console.log("Attractions in the area", areaAttractionArr);
+// });
 
 //Show an attractions's Description & Hours when clicked
 $("#sidebarContent").click( () => {

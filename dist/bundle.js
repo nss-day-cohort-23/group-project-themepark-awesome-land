@@ -29,7 +29,39 @@ module.exports.outputArea = ()=>{
 };
 
     
-},{"./factory":3,"jquery":7}],2:[function(require,module,exports){
+},{"./factory":4,"jquery":8}],2:[function(require,module,exports){
+"use strict";
+
+let factory = require("./factory");
+const $ = require('jquery');
+let key = "";
+let get = ()=>{
+    factory.getAttractions().then((data)=>{
+        data.forEach(data =>{
+            if(data.area_id == key){
+                $(".attractionByArea").append(`<div class="attrName"><strong>${data.name}</strong>:
+                ${data.description}</div>`);
+            }    
+        }); 
+    });
+};
+let match = ()=>{
+    key = event.currentTarget.id;
+    $(".attractionByArea").empty();
+    get();
+};
+
+
+
+module.exports.attractionByArea = ()=>{
+    factory.getAreas().then((data)=>{
+        $('.areas').on("click",event,match);
+    });
+};
+
+
+
+},{"./factory":4,"jquery":8}],3:[function(require,module,exports){
 "use strict";
 
 const $ = require('jquery');
@@ -79,7 +111,7 @@ if (thisHour >= 10 && thisHour < 22) {
 
 
 
-},{"./factory":3,"./formatter":4,"jquery":7}],3:[function(require,module,exports){
+},{"./factory":4,"./formatter":5,"jquery":8}],4:[function(require,module,exports){
 "use strict";
 
 const $ = require('jquery');
@@ -125,7 +157,7 @@ module.exports.getAttractions = () => {
         });
     });
 };
-},{"jquery":7}],4:[function(require,module,exports){
+},{"jquery":8}],5:[function(require,module,exports){
 "use strict";
 
 const $ = require('jquery');
@@ -147,20 +179,20 @@ module.exports.getAreaName = (attractionAreaId) => {
     });
 };
 
-module.exports.getData = () => {
-    return new Promise((resolve, reject) => {
-        console.log("getAreaName is running");
-        $.ajax({
-            url: `https://awesome-land.firebaseio.com/.json`
-        }).done( (data) => {
-            console.log("what is this data?", data);
-            resolve(data);
-        }).fail((error) => {
-            reject(error);
-            console.log("This is not running correctly");
-        });
-    });
-};
+// module.exports.getData = () => {
+//     return new Promise((resolve, reject) => {
+//         console.log("getAreaName is running");
+//         $.ajax({
+//             url: `https://awesome-land.firebaseio.com/.json`
+//         }).done( (data) => {
+//             console.log("what is this data?", data);
+//             resolve(data);
+//         }).fail((error) => {
+//             reject(error);
+//             console.log("This is not running correctly");
+//         });
+//     });
+// };
 
 // getData();
 
@@ -174,7 +206,7 @@ module.exports.getData = () => {
 
 
 
-},{"./factory":3,"jquery":7}],5:[function(require,module,exports){
+},{"./factory":4,"jquery":8}],6:[function(require,module,exports){
 "use strict";
 
 const factory = require('./factory');
@@ -182,39 +214,43 @@ const formatter = require('./formatter');
 const parkInfo = require('./parkInfo');
 const currentEvents = require('./currentEvents');
 const areaToDom = require('./areaToDom');
+const attractionToDom = require('./attractionToDom');
 
 const $ = require('jquery');
 
 factory.getParkInfo();
 factory.getAreas();
 factory.getAttractions();
-// factory.areaToDom();
 areaToDom.outputArea();
+attractionToDom.attractionByArea();
 
 // Attempting to format data
 // formatter.getData().then(data => )
 
 // const areaToDom = require('./areaToDom');
 
+
+
 // Show an area's attractions when clicked
-$(".countryContainer").click( () => {
-    $("#sidebarContent").html('');
-    let areaAttractionArr = [];
-    let clickedArea = +event.target.id;
-    console.log("area clicked", +event.target.id);
-    factory.getAttractions().then( data => {
-        data.forEach( attraction => {
-            if ( clickedArea === attraction.area_id) {
-                areaAttractionArr.push(attraction);
-                // console.log("clicked area attraction array", areaAttractionArr[i]);
-            }
-        });
-        for (let i = 0; i < areaAttractionArr.length; i++) {
-            $("#sidebarContent").append(`<div class="attractionName" id="attraction${areaAttractionArr[i].id}"><div>${areaAttractionArr[i].name}</div><div class="hidden" id="attraction${areaAttractionArr[i].id}"><p>${areaAttractionArr[i].description}</p></div></div>`);
-        }
-    });
-    console.log("Attractions in the area", areaAttractionArr);
-});
+
+// $(".countryContainer").click( () => {
+//     $("#sidebarContent").html('');
+//     let areaAttractionArr = [];
+//     let clickedArea = +event.target.id;
+//     console.log("area clicked", +event.target.id);
+//     factory.getAttractions().then( data => {
+//         data.forEach( attraction => {
+//             if ( clickedArea === attraction.area_id) {
+//                 areaAttractionArr.push(attraction);
+//                 // console.log("clicked area attraction array", areaAttractionArr[i]);
+//             }
+//         });
+//         for (let i = 0; i < areaAttractionArr.length; i++) {
+//             $("#sidebarContent").append(`<div class="attractionName" id="attraction${areaAttractionArr[i].id}"><div>${areaAttractionArr[i].name}</div><div class="hidden" id="attraction${areaAttractionArr[i].id}"><p>${areaAttractionArr[i].description}</p></div></div>`);
+//         }
+//     });
+//     console.log("Attractions in the area", areaAttractionArr);
+// });
 
 //Show an attractions's Description & Hours when clicked
 $("#sidebarContent").click( () => {
@@ -226,7 +262,7 @@ $("#sidebarContent").click( () => {
 
 
 function setCurrentTime() {
-    console.log("set current time is running");
+    // console.log("set current time is running");
     let currentTime = new Date();
     let day = currentTime.getDate();
     // +1 to the month because Jan = 0.
@@ -254,28 +290,6 @@ setCurrentTime();
 //     console.log("original data", data);
 //     console.log("attractions", data.attractions[0].description);
 // });
-
-
-
-///Ajax stuff
-//  function getAjax(){
-//     return new Promise((resolve,reject)=>{
-//         $.ajax({
-//                 url:'https://awesome-land.firebaseio.com/.json'
-//             })
-//             .done((dataTotal)=>{
-//                 resolve(dataTotal);
-//                 console.log("data ready");
-//                 console.log(dataTotal);
-//             })
-//             .fail(()=>{
-//                 reject("Somebody call IT!");
-//             });
-//     });
-// }
-
-// getAjax();
-
 
 
 
@@ -309,7 +323,7 @@ var idArr = [];
 function getAreaID(attractionArr) {
     attractionArr.forEach(function(e){
     idArr.push(e.area_id);
-    console.log(_.uniqBy(idArr)); 
+    // console.log(_.uniqBy(idArr)); 
     return idArr;
 });
 }
@@ -319,7 +333,7 @@ function getAreaID(attractionArr) {
 
 
 
-},{"./areaToDom":1,"./currentEvents":2,"./factory":3,"./formatter":4,"./parkInfo":6,"jquery":7,"lodash":8}],6:[function(require,module,exports){
+},{"./areaToDom":1,"./attractionToDom":2,"./currentEvents":3,"./factory":4,"./formatter":5,"./parkInfo":7,"jquery":8,"lodash":9}],7:[function(require,module,exports){
 "use strict";
 
 const $ = require('jquery');
@@ -329,7 +343,7 @@ factory.getParkInfo().then( data => {
     console.log("opening", data[0].operating_hours[0].opening);
     $("#sidebarContent").append(`<li> ${data[0].location} </li><li> Open: ${data[0].operating_hours[0].opening}:00AM to </li><li>${data[0].operating_hours[0].closing}:00PM</li>`);
 });
-},{"./factory":3,"jquery":7}],7:[function(require,module,exports){
+},{"./factory":4,"jquery":8}],8:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v3.2.1
  * https://jquery.com/
@@ -10584,7 +10598,7 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 (function (global){
 /*!
  * Lo-Dash v0.9.2 <http://lodash.com>
@@ -14846,4 +14860,4 @@ return jQuery;
 }(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}]},{},[5]);
+},{}]},{},[6]);
