@@ -5,14 +5,15 @@ const formatter = require('./formatter');
 const parkInfo = require('./parkInfo');
 const currentEvents = require('./currentEvents');
 const areaToDom = require('./areaToDom');
+const attractionToDom = require('./attractionToDom');
 
 const $ = require('jquery');
 
 factory.getParkInfo();
 factory.getAreas();
 factory.getAttractions();
-// factory.areaToDom();
 areaToDom.outputArea();
+attractionToDom.attractionByArea();
 
 // Attempting to format data
 // formatter.getData().then(data => )
@@ -49,7 +50,7 @@ $("#sidebarContent").click( () => {
 
 
 function setCurrentTime() {
-    console.log("set current time is running");
+    // console.log("set current time is running");
     let currentTime = new Date();
     let day = currentTime.getDate();
     // +1 to the month because Jan = 0.
@@ -77,28 +78,6 @@ setCurrentTime();
 //     console.log("original data", data);
 //     console.log("attractions", data.attractions[0].description);
 // });
-
-
-
-///Ajax stuff
-//  function getAjax(){
-//     return new Promise((resolve,reject)=>{
-//         $.ajax({
-//                 url:'https://awesome-land.firebaseio.com/.json'
-//             })
-//             .done((dataTotal)=>{
-//                 resolve(dataTotal);
-//                 console.log("data ready");
-//                 console.log(dataTotal);
-//             })
-//             .fail(()=>{
-//                 reject("Somebody call IT!");
-//             });
-//     });
-// }
-
-// getAjax();
-
 
 
 
@@ -132,7 +111,7 @@ var idArr = [];
 function getAreaID(attractionArr) {
     attractionArr.forEach(function(e){
     idArr.push(e.area_id);
-    console.log(_.uniqBy(idArr)); 
+    // console.log(_.uniqBy(idArr)); 
     return idArr;
 });
 }
