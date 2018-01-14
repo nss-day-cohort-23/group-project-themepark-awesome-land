@@ -14,8 +14,12 @@ factory.getAttractions();
 // factory.areaToDom();
 areaToDom.outputArea();
 
+// Attempting to format data
+// formatter.getData().then(data => )
+
 // const areaToDom = require('./areaToDom');
 
+// Show an area's attractions when clicked
 $(".countryContainer").click( () => {
     $("#sidebarContent").html('');
     let areaAttractionArr = [];
@@ -29,13 +33,17 @@ $(".countryContainer").click( () => {
             }
         });
         for (let i = 0; i < areaAttractionArr.length; i++) {
-            $("#sidebarContent").append(`<li class="attractionName">${areaAttractionArr[i].name}<li>`);
+            $("#sidebarContent").append(`<div class="attractionName" id="attraction${areaAttractionArr[i].id}"><div>${areaAttractionArr[i].name}</div><div class="hidden" id="attraction${areaAttractionArr[i].id}"><p>${areaAttractionArr[i].description}</p></div></div>`);
         }
     });
     console.log("Attractions in the area", areaAttractionArr);
 });
 
-// console.log("clicked area attraction array", areaAttractionArr);
+//Show an attractions's Description & Hours when clicked
+$("#sidebarContent").click( () => {
+    console.log("sidebar clicked", event.target);
+});
+
 
 
 
