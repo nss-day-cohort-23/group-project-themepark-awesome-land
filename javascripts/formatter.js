@@ -19,6 +19,24 @@ module.exports.getAreaName = (attractionAreaId) => {
     });
 };
 
+// module.exports.getData = () => {
+//     return new Promise((resolve, reject) => {
+//         console.log("getAreaName is running");
+//         $.ajax({
+//             url: `https://awesome-land.firebaseio.com/.json`
+//         }).done( (data) => {
+//             console.log("what is this data?", data);
+//             resolve(data);
+//         }).fail((error) => {
+//             reject(error);
+//             console.log("This is not running correctly");
+//         });
+//     });
+// };
+
+// getData();
+
+
 // 
 
 
