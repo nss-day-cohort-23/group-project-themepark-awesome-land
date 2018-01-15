@@ -1,7 +1,25 @@
+.wrapper{
+    background-color: darkgray;
+}
+
+.infoContainer{
+    padding-bottom: 30px;
+}
+
+.infoWrap{
+    background-color: black;
+    color: lightgray;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px #f3bc56;
+    padding: 15px;
+}
+
 header {
     margin-bottom: 30px;
     background-color: black;
     border-bottom: 1px solid black;
+    box-shadow: 0px 5px 10px #f3bc56;
 }
 
 #search{
@@ -23,11 +41,12 @@ img{
 }
 
 footer {
-    background-color: lightgrey;
+    background-color: black;
     border: 1px black solid;
+    box-shadow: 0px -5px 10px #f3bc56;
     div {
         list-style:  none;
-        color: black;
+        color: rgba(107, 181, 200, 0.637) ;
         text-align: center;
     }
 }
@@ -56,12 +75,10 @@ footer {
     display: grid;
     grid-template-columns: 33% 33% 33%;
     grid-auto-rows: 33% 33% 33%;
-    background-color: rgba(203, 214, 41, 0.699);
     grid-template-areas: 
     "a1 a2 a3"
     "a4 . a5"
     "a6 a7 a8";
-    border: 2px solid black;
     margin: auto;
     padding: 10px;
     height: 600px;
@@ -69,48 +86,86 @@ footer {
 }
 
 .area{
-    color: rgba(203, 214, 41, 0.699);
-    border: 2px solid black;
-    background: rgba(36, 34, 34, 0.966);
-    font-size: 25px;
+    color: lightgray;
+    border-radius: 50%;
+    box-shadow:
+    0 0 0 5px #BDFF9D,
+    0 0 0 10px #CF861E,
+    0 0 0 15px #6BB5C8;
+    background: black;
+    font-size: 20px;
+    text-align: center;
+}
+
+.highlight{
+    color: rgba(242, 243, 231, 0.699);
+    border-radius: 50%;
+    box-shadow:
+    0 0 0 5px red,
+    0 0 0 10px red,
+    0 0 0 15px red;
+    background: black;
+    font-size: 30px;
     text-align: center;
 }
 
 .area1 {
     grid-area: a1;
-    // background-color: blue;
 }
-
+.area1:hover{
+    background-color: #730217;
+}
 .area2 {
     grid-area: a2;
+}
+.area2:hover{
+    background-color: #D15530;
 }
 
 .area3 {
     grid-area: a3;
 }
+.area3:hover{
+    background-color: #A37849;
+}
 
 .area4 {
     grid-area: a4;
+}
+.area4:hover{
+    background-color: #2594D9;
 }
 
 .area5 {
     grid-area: a5;
 }
+.area5:hover{
+    background-color: #E73C81;
+}
 
 .area6 {
     grid-area: a6;
+}
+.area6:hover{
+    background-color: #3E4D8C;
 }
 
 .area7 {
     grid-area: a7;
 }
+.area7:hover{
+    background-color: #730217;
+}
 
 .area8 {
     grid-area: a8;
 }
+.area8:hover{
+    background-color: rgba(248, 248, 122, 0.986);
+}
 
 .area9 {
-    grid-area: a9;
+    grid-area: a9;;
 }
 
 .hidden {
@@ -122,12 +177,6 @@ footer {
 }
 
 
-.highlight{
-    color: rgba(203, 214, 41, 0.699);
-    border: 5px solid red;
-    background: rgba(40, 95, 95, 0.842);
-    font-size: 25px;
-    text-align: center;
-}
+
 
 
