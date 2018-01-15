@@ -6,8 +6,8 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+dist/
 .sass-cache/
-dist/bundle.js
 
 # Runtime data
 pids
