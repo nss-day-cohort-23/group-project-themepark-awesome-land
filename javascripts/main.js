@@ -7,8 +7,15 @@ const parkInfo = require('./parkInfo');
 const currentEvents = require('./currentEvents');
 const areaToDom = require('./areaToDom');
 const attractionToDom = require('./attractionToDom');
+
+const timeSelector = require('./timeSelector');
+
+
+
+
 const _ = require('lodash');
 // const attractionTemplate = require('../templates/areaAttraction.hbs');
+
 const $ = require('jquery');
 
 factory.getParkInfo();
@@ -50,6 +57,7 @@ $(".countryContainer").click( () => {
 });
 
 //Show an attractions's Description & Hours when clicked
+
 $("#sidebarContent").on('click', () => {
     $(event.target).children("div").toggleClass("show");
     console.log("sidebar clicked", event.target);
@@ -58,6 +66,7 @@ $("#sidebarContent").on('click', () => {
     // console.log("this is the attraction id that was clicked", areaAttractionArr[i].
 
 }); 
+
 
 
 

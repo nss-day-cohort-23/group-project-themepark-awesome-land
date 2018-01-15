@@ -23,7 +23,7 @@ module.exports.getAreas = () => {
             url: "https://awesome-land.firebaseio.com/areas.json"
         }).done( (data) => {
             resolve(data);
-            console.log("area data", data);
+            //console.log("area data", data);
         }).fail((error) => {
             reject(error);
         });
@@ -43,3 +43,18 @@ module.exports.getAttractions = () => {
         });
     });
 };
+
+module.exports.getAll = () => {
+  return new Promise((resolve, reject) => {
+      $.ajax({
+          url: "https://awesome-land.firebaseio.com/.json"
+      }).done( (data) => {
+          resolve(data);
+          // console.log("attraction data", data);
+  
+      }).fail((error) => {
+          reject(error);
+      });
+  });
+};
+
