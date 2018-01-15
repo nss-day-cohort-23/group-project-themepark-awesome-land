@@ -1,14 +1,20 @@
 "use strict";
 
+const highlight = require('./SearchHighlightDOM');
 const factory = require('./factory');
 const formatter = require('./formatter');
 const parkInfo = require('./parkInfo');
 const currentEvents = require('./currentEvents');
 const areaToDom = require('./areaToDom');
 const attractionToDom = require('./attractionToDom');
+
 const timeSelector = require('./timeSelector');
 
 
+
+
+const _ = require('lodash');
+// const attractionTemplate = require('../templates/areaAttraction.hbs');
 
 const $ = require('jquery');
 
@@ -17,6 +23,7 @@ factory.getAreas();
 factory.getAttractions();
 areaToDom.outputArea();
 attractionToDom.attractionByArea();
+highlight.highlightArea();
 
 // Attempting to format data
 // formatter.getData().then(data => )
@@ -28,7 +35,7 @@ attractionToDom.attractionByArea();
 // Show an area's attractions when clicked
 
 $(".countryContainer").click( () => {
-    $("#sidebarContent").html('');
+    $(".attractionByArea").html('');
     let areaAttractionArr = [];
     let clickedArea = +event.target.id;
     console.log("area clicked", +event.target.id);
@@ -40,7 +47,7 @@ $(".countryContainer").click( () => {
             }
         });
         for (let i = 0; i < areaAttractionArr.length; i++) {
-            $("#sidebarContent").append(`<div class="attractionName" id="attraction${areaAttractionArr[i].id}">${areaAttractionArr[i].name} <div class="hidden" id="attraction${areaAttractionArr[i].id}"><p>${areaAttractionArr[i].description}</p></div></div>`);
+            $(".attractionByArea").append(`<div class="attractionName" id="attraction${areaAttractionArr[i].id}">${areaAttractionArr[i].name} <div class="hidden" id="attraction${areaAttractionArr[i].id}"><p>${areaAttractionArr[i].description}</p></div></div>`);
         }
         // for (let i = 0; i < areaAttractionArr.length; i++) {
         //     $("#sidebarContent").append(attractionTemplate(areaAttractionArr));
@@ -98,40 +105,6 @@ setCurrentTime();
 
 
 
-// Search function to match user input with JSON
-$(document).ready(function(){
-    $("#search").keydown(function(e){
-        if(e.which == 13) {
-            var userSearch = $("#search").val().toLowerCase();
-            $('#search').val(''); //CLEAR INPUT
-            factory.getAttractions().then( (attrData) => {
-                var matchingAttractions = [];
-                for (let i = 0; i < attrData.length; i++){
-                    var attractionNames = attrData[i].name.toLowerCase();
-                    if(attractionNames.includes(userSearch)){
-                        matchingAttractions.push(attrData[i]);
-                    }
-                }
-                //loop over matching attractions array and find the area_id key
-                getAreaID(matchingAttractions);
-                return matchingAttractions;
-            });
-        }
-    });
-});
-
-//loop over matching attractions array and find the area_id key
-var _ = require('lodash');
-
-var idArr = [];
-function getAreaID(attractionArr) {
-    attractionArr.forEach(function(e){
-    idArr.push(e.area_id);
-    // console.log(_.uniqBy(idArr)); 
-    return idArr;
-});
-}
-// use area_id to give a class to area section, or to toggle highlight class
 
 
 
