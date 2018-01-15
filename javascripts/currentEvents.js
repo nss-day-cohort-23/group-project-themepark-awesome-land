@@ -8,8 +8,10 @@ const formatter = require('./formatter');
 
 let currentTime = new Date();
 let thisHour = currentTime.getHours();
+
 console.log("thishour", thisHour);
 let areaArr = ["Main Street U.S.A", "Adventureland", "Frontierland", "Liberty Square", "Fantasyland", "Tomorrowland", "Cinderlla Castle"];
+
 
 if (thisHour >= 9 && thisHour < 22) {
     factory.getAttractions().then(data => {
@@ -34,7 +36,7 @@ if (thisHour >= 9 && thisHour < 22) {
                                 $("#sidebarContent").append(`<li class="attractionName">${attraction.name} (${areaArr[(attracId)-1]})</li>`); 
                                 console.log("attraction at this hour", attraction);    
                      }                   
-                            
+                        
                 }
             }
         });

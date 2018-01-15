@@ -1,6 +1,6 @@
-{{#each something in key}}
+{{#each something in @key}}
 <div class="attractionName" id="attraction{{something.id}}">
-    {{name}}
+    {{something.name}}
     <div class="hidden" id="attraction{{something.id}}">
         <p>{{something.description}}</p>
         {{#if times}}
