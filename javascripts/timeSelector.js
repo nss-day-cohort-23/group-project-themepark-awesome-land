@@ -20,7 +20,7 @@ $time.on("click", (e) => {
     for (let i = 0; i < attractionTime.length; i++) {
       if (attractionTime[i].startsWith(shortTime)) {
         console.log("attractions", attraction);
-        $("#sidebarContent").append(`<li class="attractionName">${attraction.name} (${attraction.area})</li>`);
+        $(".searchByTime").append(`<li class="attractionName">${attraction.name} (${attraction.area})</li>`);
       }
     }
   });
