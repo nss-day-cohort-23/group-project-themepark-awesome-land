@@ -28,7 +28,7 @@ highlight.highlightArea();
 // Show an area's attractions when clicked
 
 $(".countryContainer").click( () => {
-    $("#sidebarContent").html('');
+    $(".attractionByArea").html('');
     let areaAttractionArr = [];
     let clickedArea = +event.target.id;
     console.log("area clicked", +event.target.id);
@@ -40,7 +40,7 @@ $(".countryContainer").click( () => {
             }
         });
         for (let i = 0; i < areaAttractionArr.length; i++) {
-            $("#sidebarContent").append(`<div class="attractionName" id="attraction${areaAttractionArr[i].id}">${areaAttractionArr[i].name} <div class="hidden" id="attraction${areaAttractionArr[i].id}"><p>${areaAttractionArr[i].description}</p></div></div>`);
+            $(".attractionByArea").append(`<div class="attractionName" id="attraction${areaAttractionArr[i].id}">${areaAttractionArr[i].name} <div class="hidden" id="attraction${areaAttractionArr[i].id}"><p>${areaAttractionArr[i].description}</p></div></div>`);
         }
         // for (let i = 0; i < areaAttractionArr.length; i++) {
         //     $("#sidebarContent").append(attractionTemplate(areaAttractionArr));
