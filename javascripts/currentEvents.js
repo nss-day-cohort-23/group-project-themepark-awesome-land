@@ -29,7 +29,7 @@ if (thisHour >= 9 && thisHour < 22) {
                         let attracId = attraction.area_id;
                         // console.log("formatter.getAreaName(attracId) with then", formatter.getAreaName(attracId).then( areaName => areaName));
                         // $("#sidebarContent").append(`<li class="attractionName">${attraction.name} (${formatter.getAreaName(attracId).then( areaName => areaName)})</li>`);
-                        $("#sidebarContent").append(`<li class="attractionName">${attraction.name} (${areaArr[(attracId)-1]})</li>`);                        
+                        $(".currentEvents").append(`<li class="attractionName">${attraction.name} (${areaArr[(attracId)-1]})</li>`);                        
                     }
                 }
                 // return Promise.all(promiseArr).then( data => {
