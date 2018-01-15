@@ -6,14 +6,7 @@
     padding-bottom: 30px;
 }
 
-.infoWrap{
-    background-color: black;
-    color: lightgray;
-    border: 1px solid black;
-    border-radius: 10px;
-    box-shadow: 5px 5px 10px #f3bc56;
-    padding: 15px;
-}
+
 
 header {
     margin-bottom: 30px;
@@ -57,9 +50,28 @@ footer {
     font-size: .85em;
 }
 
+.sideTitle{
+    color:  rgb(255, 255, 129);
+}
+
+.col-4{
+    margin-left: 0px;
+}
+
+.infoWrap{
+    margin-left: 0px;
+    margin-top: -40px;
+    padding-left: 15px;
+    background-color: black;
+    color: lightgray;
+    border: 1px solid black;
+    border-radius: 0px 10px 10px 0px;
+    box-shadow: 2px 2px 15px #6BB5C8;
+}
+
 .attractionByArea{
-    margin: 10px;
-    height: 10em;
+    margin: 15px;
+    height: 12em;
     width: 22em;
     overflow: scroll;
     border: 1px solid white;
@@ -68,8 +80,8 @@ footer {
     box-shadow: -2px -2px 10px #f3bc56;
 }
 .currentEvents{
-    margin: 10px;
-    height: 10em;
+    margin: 15px;
+    height: 12em;
     width: 22em;
     overflow: scroll;
     border: 1px solid white;
@@ -80,8 +92,8 @@ footer {
 }
 
 .searchByTime{
-    margin: 10px;
-    height: 10em;
+    margin: 15px;
+    height: 12em;
     width: 22em;
     overflow: scroll;
     border: 1px solid white;
@@ -89,13 +101,16 @@ footer {
     border-radius: 5px;
     box-shadow: -2px -2px 10px #f3bc56;
 }
-// -------------------------------------------------------------------------------------------
 
-.infoContainer {
-    // border: 3px solid black;
-    margin-left: 10px;
-    margin-bottom: 1px;
+// -----------------------------------------------------------
+//-------------------------------------------MAP------------------------------------------------
+// -----------------------------------------------------------
 
+.Map-Title{
+    text-align: center;
+    font-size: 40px;
+    margin-top: -25px;
+    margin-bottom: 20px;
 }
 
 #areaContainer{
@@ -123,6 +138,8 @@ footer {
     background: black;
     font-size: 20px;
     text-align: center;
+    vertical-align: middle;
+    line-height: 175px;  
 }
 
 .highlight{
