@@ -6,9 +6,20 @@ const formatter = require('./formatter');
 const parkInfo = require('./parkInfo');
 const currentEvents = require('./currentEvents');
 const areaToDom = require('./areaToDom');
+
 const attractionByArea = require('./attractionByArea');
+
+// const attractionToDom = require('./attractionToDom');
+
+const timeSelector = require('./timeSelector');
+
+
+
+
+
 const _ = require('lodash');
 // const attractionTemplate = require('../templates/areaAttraction.hbs');
+
 const $ = require('jquery');
 
 factory.getParkInfo();
@@ -23,6 +34,7 @@ attractionByArea.attractionToArea();
 // formatter.getData().then(data => )
 
 // const areaToDom = require('./areaToDom');
+
 
 
 
@@ -64,6 +76,10 @@ attractionByArea.attractionToArea();
 
 
 
+
+
+
+
 function setCurrentTime() {
     // console.log("set current time is running");
     let currentTime = new Date();
@@ -86,13 +102,7 @@ setCurrentTime();
 
 
 
-// $.ajax({
-//     url:'https://awesome-land.firebaseio.com/.json'
-// })
-// .done((data)=>{
-//     console.log("original data", data);
-//     console.log("attractions", data.attractions[0].description);
-// });
+/
 
 
 
