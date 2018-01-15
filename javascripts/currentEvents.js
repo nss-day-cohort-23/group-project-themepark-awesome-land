@@ -9,8 +9,9 @@ const formatter = require('./formatter');
 let currentTime = new Date();
 let thisHour = currentTime.getHours();
 console.log("thishour", thisHour);
+let areaArr = ["Main Street U.S.A", "Adventureland", "Frontierland", "Liberty Square", "Fantasyland", "Tomorrowland", "Cinderlla Castle"];
 
-if (thisHour >= 10 && thisHour < 22) {
+if (thisHour >= 9 && thisHour < 22) {
     factory.getAttractions().then(data => {
         if (thisHour > 12 && thisHour < 22) {
             thisHour = thisHour - 12;
@@ -27,7 +28,8 @@ if (thisHour >= 10 && thisHour < 22) {
                     if(attraction.times[i].startsWith(stringHour)) {
                         let attracId = attraction.area_id;
                         // console.log("formatter.getAreaName(attracId) with then", formatter.getAreaName(attracId).then( areaName => areaName));
-                        $("#sidebarContent").append(`<li class="attractionName">${attraction.name} (${formatter.getAreaName(attracId).then( areaName => areaName)})</li>`);
+                        // $("#sidebarContent").append(`<li class="attractionName">${attraction.name} (${formatter.getAreaName(attracId).then( areaName => areaName)})</li>`);
+                        $("#sidebarContent").append(`<li class="attractionName">${attraction.name} (${areaArr[(attracId)-1]})</li>`);                        
                     }
                 }
                 // return Promise.all(promiseArr).then( data => {
