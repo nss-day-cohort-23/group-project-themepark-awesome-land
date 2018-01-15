@@ -8,7 +8,7 @@ const formatter = require('./formatter');
 
 let currentTime = new Date();
 let thisHour = currentTime.getHours();
-console.log("thishour", thisHour);
+//console.log("thishour", thisHour);
 
 if (thisHour >= 10 && thisHour < 22) {
     factory.getAttractions().then(data => {

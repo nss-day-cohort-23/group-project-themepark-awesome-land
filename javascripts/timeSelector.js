@@ -6,8 +6,8 @@ const $time = $('.dropdown-item');
 const $dropMenu = $('.dropdown-menu');
 
 // arrays to hold sorted attractions
-let withTimes = [];
 let withoutTimes = [];
+let withTimes = [];
 
 // event listener for dropdown items
 $time.on("click", (e) => {
@@ -24,6 +24,8 @@ $time.on("click", (e) => {
           }
         });
       });
+      console.log(attractions);
+      
       for (let i = 0; i < attractions.length; i++) {
         if (attractions[i].times !== undefined) {
           withTimes.push(attractions[i]);
@@ -31,12 +33,7 @@ $time.on("click", (e) => {
           withoutTimes.push(attractions[i]);
         }
       }
-    //loop thru times 
-      for(let j = 0; j > withTimes.length; j++) {
-        console.log(withTimes[j].times);
-      }
-      
-    console.log("has times", withTimes, "doesn't have times", withoutTimes);
+     // console.log("has times", withTimes, "doesn't have times", withoutTimes);
     });
   });
        

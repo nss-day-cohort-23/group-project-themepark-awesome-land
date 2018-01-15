@@ -6,6 +6,7 @@ const parkInfo = require('./parkInfo');
 const currentEvents = require('./currentEvents');
 const areaToDom = require('./areaToDom');
 const attractionToDom = require('./attractionToDom');
+const timeSelector = require('./timeSelector');
 
 const $ = require('jquery');
 
@@ -45,7 +46,7 @@ attractionToDom.attractionByArea();
 
 //Show an attractions's Description & Hours when clicked
 $("#sidebarContent").click( () => {
-    console.log("sidebar clicked", event.target);
+    //console.log("sidebar clicked", event.target);
 });
 
 
