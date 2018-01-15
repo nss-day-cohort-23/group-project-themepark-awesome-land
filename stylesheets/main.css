@@ -81,6 +81,12 @@ footer {
 .area9 {
   grid-area: a9; }
 
+.hidden {
+  display: none; }
+
+.show {
+  display: block; }
+
 .highlight {
   color: rgba(203, 214, 41, 0.699);
   border: 5px solid red;
