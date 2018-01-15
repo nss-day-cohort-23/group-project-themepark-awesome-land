@@ -6,7 +6,7 @@ const formatter = require('./formatter');
 const parkInfo = require('./parkInfo');
 const currentEvents = require('./currentEvents');
 const areaToDom = require('./areaToDom');
-const attractionToDom = require('./attractionToDom');
+const attractionByArea = require('./attractionByArea');
 const _ = require('lodash');
 // const attractionTemplate = require('../templates/areaAttraction.hbs');
 const $ = require('jquery');
@@ -15,8 +15,9 @@ factory.getParkInfo();
 factory.getAreas();
 factory.getAttractions();
 areaToDom.outputArea();
-attractionToDom.attractionByArea();
+// attractionToDom.attractionByArea();
 highlight.highlightArea();
+attractionByArea.attractionToArea();
 
 // Attempting to format data
 // formatter.getData().then(data => )
@@ -25,39 +26,39 @@ highlight.highlightArea();
 
 
 
-// Show an area's attractions when clicked
+// // Show an area's attractions when clicked
 
-$(".countryContainer").click( () => {
-    $(".attractionByArea").html('');
-    let areaAttractionArr = [];
-    let clickedArea = +event.target.id;
-    console.log("area clicked", +event.target.id);
-    factory.getAttractions().then( data => {
-        data.forEach( attraction => {
-            if ( clickedArea === attraction.area_id) {
-                areaAttractionArr.push(attraction);
-                // console.log("clicked area attraction array", areaAttractionArr[i]);
-            }
-        });
-        for (let i = 0; i < areaAttractionArr.length; i++) {
-            $(".attractionByArea").append(`<div class="attractionName" id="attraction${areaAttractionArr[i].id}">${areaAttractionArr[i].name} <div class="hidden" id="attraction${areaAttractionArr[i].id}"><p>${areaAttractionArr[i].description}</p></div></div>`);
-        }
-        // for (let i = 0; i < areaAttractionArr.length; i++) {
-        //     $("#sidebarContent").append(attractionTemplate(areaAttractionArr));
-        // }
-    });
-    console.log("Attractions in the area", areaAttractionArr);
-});
+// $(".countryContainer").click( () => {
+//     $(".attractionByArea").html('');
+//     let areaAttractionArr = [];
+//     let clickedArea = +event.target.id;
+//     console.log("area clicked", +event.target.id);
+//     factory.getAttractions().then( data => {
+//         data.forEach( attraction => {
+//             if ( clickedArea === attraction.area_id) {
+//                 areaAttractionArr.push(attraction);
+//                 // console.log("clicked area attraction array", areaAttractionArr[i]);
+//             }
+//         });
+//         for (let i = 0; i < areaAttractionArr.length; i++) {
+//             $(".attractionByArea").append(`<div class="attractionName" id="attraction${areaAttractionArr[i].id}">${areaAttractionArr[i].name} <div class="hidden" id="attraction${areaAttractionArr[i].id}"><p>${areaAttractionArr[i].description}</p></div></div>`);
+//         }
+//         // for (let i = 0; i < areaAttractionArr.length; i++) {
+//         //     $("#sidebarContent").append(attractionTemplate(areaAttractionArr));
+//         // }
+//     });
+//     console.log("Attractions in the area", areaAttractionArr);
+// });
 
-//Show an attractions's Description & Hours when clicked
-$("#sidebarContent").on('click', () => {
-    $(event.target).children("div").toggleClass("show");
-    console.log("sidebar clicked", event.target);
-    // $("event.target")
-    // $(`"#attraction${areaAttractionArr[i].id}"`);
-    // console.log("this is the attraction id that was clicked", areaAttractionArr[i].
+// //Show an attractions's Description & Hours when clicked
+// $("#sidebarContent").on('click', () => {
+//     $(event.target).children("div").toggleClass("show");
+//     console.log("sidebar clicked", event.target);
+//     // $("event.target")
+//     // $(`"#attraction${areaAttractionArr[i].id}"`);
+//     // console.log("this is the attraction id that was clicked", areaAttractionArr[i].
 
-}); 
+// }); 
 
 
 
