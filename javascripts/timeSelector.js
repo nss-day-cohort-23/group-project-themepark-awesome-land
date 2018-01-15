@@ -3,7 +3,6 @@ const $ = require('jquery');
 const dataFactory = require('./factory');
 
 const $time = $('.dropdown-item');
-const $dropMenu = $('.dropdown-menu');
 
 // arrays to hold sorted attractions
 let withoutTimes = [];
@@ -12,7 +11,24 @@ let withTimes = [];
 // event listener for dropdown items
 $time.on("click", (e) => {
   let clickedTime = event.target.innerText;
-// load data and sort into 2 arrays based on if attraction has starting times or not
+  let shortTime = clickedTime.slice(0, 2);
+
+  //console.log(clickedTime);
+  //console.log(withTimes);
+  withTimes.forEach((attraction) => {
+    let attractionTime = attraction.times;
+    for (let i = 0; i < attractionTime.length; i++) {
+      if (attractionTime[i].startsWith(shortTime)) {
+        console.log("attractions", attraction);
+        $("#sidebarContent").append(`<li class="attractionName">${attraction.name} (${attraction.area})</li>`);
+      }
+    }
+  });
+});
+      
+          
+  // load data and sort into 2 arrays based on if attraction has starting times or not
+function loadDataAndSort() {
   dataFactory.getAll()
     .then((data) => {
       let attractions = data.attractions;
@@ -24,8 +40,8 @@ $time.on("click", (e) => {
           }
         });
       });
-      console.log(attractions);
-      
+      //console.log(attractions);
+
       for (let i = 0; i < attractions.length; i++) {
         if (attractions[i].times !== undefined) {
           withTimes.push(attractions[i]);
@@ -33,11 +49,18 @@ $time.on("click", (e) => {
           withoutTimes.push(attractions[i]);
         }
       }
-     // console.log("has times", withTimes, "doesn't have times", withoutTimes);
+      //console.log("has times", withTimes, "doesn't have times", withoutTimes);
     });
-  });
-       
-           
+}
+         
+  loadDataAndSort();
+
+    
+
+    
+  
+
+  
           
        
 
@@ -49,18 +72,3 @@ $time.on("click", (e) => {
 
 
   
-  
-  //   dataFactory.getAttractions()
-  //     .then((data) => {
-    //       for (let i = 0; i < data.length; i++) {
-      //         if (data[i].times !== undefined) {
-        //           attractionsWithTimes.push(data[i]);
-        
-        
-        //         } else {
-          //           withoutTimes.push(data[i]);
-          //         }
-          //       }
-          //     });
-          //   //console.log("Has times", attractionsWithTimes, "Doesn't have times", withoutTimes);
-          // });
