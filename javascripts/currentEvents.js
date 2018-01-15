@@ -32,10 +32,13 @@ if (thisHour >= 9 && thisHour < 22) {
                     if (attraction.times[i].startsWith(stringHour) && attraction.times[i].charAt(4) === "A" && attraction.times[i].startsWith("9")) {
                         console.log("attractions at 9:am", attraction);
                         $("#sidebarContent").append(`<li class="attractionName">${attraction.name} (${areaArr[(attracId)-1]})</li>`);
-                    }   else if (attraction.times[i].startsWith(stringHour)) {
-                                $("#sidebarContent").append(`<li class="attractionName">${attraction.name} (${areaArr[(attracId)-1]})</li>`); 
+                    }   else if (attraction.times[i].startsWith(stringHour) && attraction.times[i].charAt(4) === "P" && attraction.times[i].startsWith("9")) {
+                                $("#sidebarContent").append(`<li class="attractionName" >${attraction.name} (${areaArr[(attracId)-1]})</li>`); 
                                 console.log("attraction at this hour", attraction);    
-                     }                   
+                    }  else if (attraction.times[i].startsWith(stringHour)) {
+                                $("#sidebarContent").append(`<li class="attractionName" href="#">${attraction.name} (${areaArr[(attracId)-1]})</li>`); 
+                                console.log("attraction at this hour", attraction);
+                    }              
                         
                 }
             }
