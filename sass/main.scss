@@ -43,7 +43,6 @@ img{
 footer {
     background-color: black;
     border: 1px black solid;
-    box-shadow: 0px -5px 10px #f3bc56;
     div {
         list-style:  none;
         color: rgba(107, 181, 200, 0.637) ;
@@ -51,12 +50,46 @@ footer {
     }
 }
 
-
+// ---------------------------------------SIDE BAR--------------------------------------------
 .sidebarLists li {
     list-style: none;
     color: rgba(0, 0, 0, 0.651);
     font-size: .85em;
 }
+
+.attractionByArea{
+    margin: 10px;
+    height: 10em;
+    width: 22em;
+    overflow: scroll;
+    border: 1px solid white;
+    background-color:#6BB5C8;
+    border-radius: 5px;
+    box-shadow: -2px -2px 10px #f3bc56;
+}
+.currentEvents{
+    margin: 10px;
+    height: 10em;
+    width: 22em;
+    overflow: scroll;
+    border: 1px solid white;
+    background-color:#6BB5C8;
+    border-radius: 5px;
+    box-shadow: -2px -2px 10px #f3bc56;
+
+}
+
+.searchByTime{
+    margin: 10px;
+    height: 10em;
+    width: 22em;
+    overflow: scroll;
+    border: 1px solid white;
+    background-color:#6BB5C8;
+    border-radius: 5px;
+    box-shadow: -2px -2px 10px #f3bc56;
+}
+// -------------------------------------------------------------------------------------------
 
 .infoContainer {
     // border: 3px solid black;
@@ -64,11 +97,6 @@ footer {
     margin-bottom: 1px;
 
 }
-
-// .attractionName {
-//     font-weight: bold;
-// }
-
 
 #areaContainer{
     // float: right;
@@ -175,7 +203,6 @@ footer {
 .show {
     display: block;
 }
-
 
 
 
