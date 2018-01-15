@@ -6,7 +6,7 @@ const parkInfo = require('./parkInfo');
 const currentEvents = require('./currentEvents');
 const areaToDom = require('./areaToDom');
 const attractionToDom = require('./attractionToDom');
-// const attractionTemplate = require('../templates/areaAttraction.hbs');
+const attractionTemplate = require('../templates/areaAttraction.hbs');
 
 const $ = require('jquery');
 
@@ -25,6 +25,7 @@ attractionToDom.attractionByArea();
 
 // Show an area's attractions when clicked
 
+let typeArr = ["ride", "restaurant", "show", "vendor", "character meet", "animals", "game", "special event"];
 $(".countryContainer").click( () => {
     $("#sidebarContent").html('');
     let areaAttractionArr = [];
@@ -37,9 +38,14 @@ $(".countryContainer").click( () => {
                 // console.log("clicked area attraction array", areaAttractionArr[i]);
             }
         });
-        for (let i = 0; i < areaAttractionArr.length; i++) {
-            $("#sidebarContent").append(`<div class="attractionName" id="attraction${areaAttractionArr[i].id}">${areaAttractionArr[i].name} <div class="hidden" id="attraction${areaAttractionArr[i].id}"><p>${areaAttractionArr[i].description}</p></div></div>`);
-        }
+        // for (let i = 0; i < areaAttractionArr.length; i++) {
+        //     $("#sidebarContent").append(`<div class="attractionName" id="attraction${areaAttractionArr[i].id}">${areaAttractionArr[i].name} (${typeArr[(areaAttractionArr[i].type_id)-1]}) <div class="hidden" id="attraction${areaAttractionArr[i].id}"><p>${areaAttractionArr[i].description}</p></div></div>`);
+        // }
+        // HANDLEBARS
+        let attractionObj = {
+            key: areaAttractionArr
+        };
+        $("#sidebarContent").append(attractionTemplate(attractionObj));
         // for (let i = 0; i < areaAttractionArr.length; i++) {
         //     $("#sidebarContent").append(attractionTemplate(areaAttractionArr));
         // }

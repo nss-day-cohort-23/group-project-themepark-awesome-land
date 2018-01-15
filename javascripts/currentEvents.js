@@ -13,28 +13,29 @@ let areaArr = ["Main Street U.S.A", "Adventureland", "Frontierland", "Liberty Sq
 
 if (thisHour >= 9 && thisHour < 22) {
     factory.getAttractions().then(data => {
-        if (thisHour > 12 && thisHour < 22) {
+        if (thisHour === 21) {
+            thisHour = "9:00PM";
+        } else if (thisHour > 12 && thisHour < 22) {
             thisHour = thisHour - 12;
-        }
+        } 
         if (thisHour === 1) {
             thisHour = thisHour + ":";
         }
-        let stringHour = thisHour.toString();
-        // let promiseArr = [];
+        let stringHour = thisHour.toString(); 
         data.forEach( attraction => {
             if (attraction.times) {
             let attractionTimeLength = attraction.times;
+            let attracId = attraction.area_id;
                 for(let i=0; i < attractionTimeLength.length; i++) {
-                    if(attraction.times[i].startsWith(stringHour)) {
-                        let attracId = attraction.area_id;
-                        // console.log("formatter.getAreaName(attracId) with then", formatter.getAreaName(attracId).then( areaName => areaName));
-                        // $("#sidebarContent").append(`<li class="attractionName">${attraction.name} (${formatter.getAreaName(attracId).then( areaName => areaName)})</li>`);
-                        $("#sidebarContent").append(`<li class="attractionName">${attraction.name} (${areaArr[(attracId)-1]})</li>`);                        
-                    }
+                    if (attraction.times[i].startsWith(stringHour) && attraction.times[i].charAt(4) === "A" && attraction.times[i].startsWith("9")) {
+                        console.log("attractions at 9:am", attraction);
+                        $("#sidebarContent").append(`<li class="attractionName">${attraction.name} (${areaArr[(attracId)-1]})</li>`);
+                    }   else if (attraction.times[i].startsWith(stringHour)) {
+                                $("#sidebarContent").append(`<li class="attractionName">${attraction.name} (${areaArr[(attracId)-1]})</li>`); 
+                                console.log("attraction at this hour", attraction);    
+                     }                   
+                            
                 }
-                // return Promise.all(promiseArr).then( data => {
-                // console.log("promise all", data);
-                // });
             }
         });
     });
