@@ -123,7 +123,7 @@ var idArr = [];
 function getAreaID(attractionArr) {
     attractionArr.forEach(function(e){
     idArr.push(e.area_id);
-    // console.log(_.uniqBy(idArr)); 
+    console.log(_.uniqBy(idArr)); 
     return idArr;
 });
 }
