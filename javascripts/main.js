@@ -100,6 +100,7 @@ $(document).ready(function(){
         if(e.which == 13) {
             var userSearch = $("#search").val().toLowerCase();
             $('#search').val(''); //CLEAR INPUT
+            $(".highlight").removeClass("highlight");
             factory.getAttractions().then( (attrData) => {
                 var matchingAttractions = [];
                 for (let i = 0; i < attrData.length; i++){
@@ -119,15 +120,24 @@ $(document).ready(function(){
 //loop over matching attractions array and find the area_id key
 var _ = require('lodash');
 
-var idArr = [];
+
 function getAreaID(attractionArr) {
+    var idArr = [];
     attractionArr.forEach(function(e){
     idArr.push(e.area_id);
-    console.log(_.uniqBy(idArr)); 
+// use area_id to give a class to area section, or to toggle highlight class
+    let newIdArr = _.uniqBy(idArr);
+    newIdArr.forEach( (area_id) =>{
+        $(`#${area_id}`)
+        .addClass("highlight");
+    });
+
+
+    console.log(newIdArr); 
     return idArr;
 });
 }
-// use area_id to give a class to area section, or to toggle highlight class
+
 
 
 
