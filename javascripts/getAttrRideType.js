@@ -11,7 +11,7 @@ function descOut(){
 
 module.exports.attractionData= ()=>{
     factory.getAttractions().then((data)=>{
-        console.log("first dump", data);
+        // console.log("first dump", data);
             $(".attractionByArea").on("click",event, descOut); 
         });  
 };

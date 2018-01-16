@@ -1,11 +1,14 @@
-{{#each something in @key}}
-<div class="attractionName" id="attraction{{something.id}}">
-    {{something.name}}
-    <div class="hidden" id="attraction{{something.id}}">
-        <p>{{something.description}}</p>
+{{#each this}}
+<div class="attractionName" id="attraction{{id}}">
+    <a href="#">{{name}} ({{typeName}})</a>
+    <div class="hidden" id="attraction{{id}}">
+        <p>{{description}}</p>
         {{#if times}}
-            {{#each times}}
-               <li>{{this}}</li> 
+            {{#each this}}
+
+                <ul class="eventTimes>
+                    <li>{{times}}</li> 
+                </ul>
             {{/each}}
         {{/if}}
     </div>

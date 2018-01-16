@@ -9,7 +9,7 @@ const formatter = require('./formatter');
 let currentTime = new Date();
 let thisHour = currentTime.getHours();
 
-console.log("thishour", thisHour);
+// console.log("thishour", thisHour);
 let areaArr = ["Main Street U.S.A", "Adventureland", "Frontierland", "Liberty Square", "Fantasyland", "Tomorrowland", "Cinderlla Castle"];
 
 
@@ -30,14 +30,14 @@ if (thisHour >= 9 && thisHour < 22) {
             let attracId = attraction.area_id;
                 for(let i=0; i < attractionTimeLength.length; i++) {
                     if (attraction.times[i].startsWith(stringHour) && attraction.times[i].charAt(4) === "A" && attraction.times[i].startsWith("9")) {
-                        console.log("attractions at 9:am", attraction);
+                        // console.log("attractions at 9:am", attraction);
                         $("#sidebarContent").append(`<li class="attractionName">${attraction.name} (${areaArr[(attracId)-1]})</li>`);
                     }   else if (attraction.times[i].startsWith(stringHour) && attraction.times[i].charAt(4) === "P" && attraction.times[i].startsWith("9")) {
                                 $("#sidebarContent").append(`<li class="attractionName" >${attraction.name} (${areaArr[(attracId)-1]})</li>`); 
-                                console.log("attraction at this hour", attraction);    
+                                // console.log("attraction at this hour", attraction);    
                     }  else if (attraction.times[i].startsWith(stringHour)) {
                                 $("#sidebarContent").append(`<li class="attractionName" href="#">${attraction.name} (${areaArr[(attracId)-1]})</li>`); 
-                                console.log("attraction at this hour", attraction);
+                                // console.log("attraction at this hour", attraction);
                     }              
                         
                 }

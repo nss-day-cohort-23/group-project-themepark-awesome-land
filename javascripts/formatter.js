@@ -19,29 +19,28 @@ module.exports.getAreaName = (attractionAreaId) => {
     });
 };
 
-// module.exports.getData = () => {
-//     return new Promise((resolve, reject) => {
-//         console.log("getAreaName is running");
-//         $.ajax({
-//             url: `https://awesome-land.firebaseio.com/.json`
-//         }).done( (data) => {
-//             console.log("what is this data?", data);
-//             resolve(data);
-//         }).fail((error) => {
-//             reject(error);
-//             console.log("This is not running correctly");
-//         });
-//     });
-// };
 
-// getData();
-
-
-// 
-
-
-
-
-
-
-
+module.exports.attractionData = (data) => {
+    // let attractionData = factory.getAttractions();
+    // let attractionTypeData = factory.getAttractionTypes();
+    // let attractionArea = factory.getAreas();
+        console.log("promise data in formatter", data);
+        let attractions = data[0];
+        let types = data[1];
+        let areas = data[2];
+        for (let a = 0; a < attractions.length; a++) {
+            for (let t = 0; t < types.length; t++) {
+                for(let aa = 0; aa < areas.length; aa++) {
+                    if (attractions[a].type_id === types[t].id) {
+                        attractions[a].typeName = types[t].name;
+                    }
+                    if (attractions[a].area_id === areas[aa].id) {
+                        attractions[a].areaName = areas[aa].name;
+                    }
+                }
+            }
+        }
+        console.log("attractions", attractions);
+        return attractions;
+    // });
+};
