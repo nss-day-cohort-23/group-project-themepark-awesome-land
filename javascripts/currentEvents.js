@@ -5,15 +5,12 @@ const factory = require('./factory');
 const formatter = require('./formatter');
 const attractionTemplate = require('../templates/areaAttraction.hbs');
 
-// factory.getAttractions();
 
 let currentTime = new Date();
 let thisHour = currentTime.getHours();
 
-// console.log("thishour", thisHour);
-let areaArr = ["Main Street U.S.A", "Adventureland", "Frontierland", "Liberty Square", "Fantasyland", "Tomorrowland", "Cinderlla Castle"];
 
-// THIS WORKS!
+// THIS IS NOT NEEDED BUT KEEPING IN CASE THE OTHER OPTION BREAKS!
 // if (thisHour >= 9 && thisHour < 22) {
 //     factory.getAttractions().then(data => {
 //         if (thisHour === 21) {
@@ -94,7 +91,7 @@ if (thisHour >= 9 && thisHour < 22) {
         });
     }); 
     } else {
-        // $("#sidebarContent").html("Park is currently closed.");
+        $("#sidebarContent").html("Park is currently closed.");
 }
 
 

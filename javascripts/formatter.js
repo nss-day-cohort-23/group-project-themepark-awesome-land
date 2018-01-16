@@ -21,10 +21,6 @@ module.exports.getAreaName = (attractionAreaId) => {
 
 
 module.exports.attractionData = (data) => {
-    // let attractionData = factory.getAttractions();
-    // let attractionTypeData = factory.getAttractionTypes();
-    // let attractionArea = factory.getAreas();
-        console.log("promise data in formatter", data);
         let attractions = data[0];
         let types = data[1];
         let areas = data[2];
