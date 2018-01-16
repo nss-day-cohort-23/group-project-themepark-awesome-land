@@ -3,22 +3,26 @@
 let factory = require("./factory");
 const $ = require('jquery');
 
+let typeArr = ["ride", "restaurant", "show", "vendor", "character meet", "animals", "game", "special event"];
 
 module.exports.attractionToArea=()=>{
     $(".countryContainer").click( () => {
         $(".attractionByArea").html('');
         let areaAttractionArr = [];
+       
         let clickedArea = +event.target.id;
+        let clickedTime =event.currentTarget.times;
         console.log("area clicked", +event.target.id);
         factory.getAttractions().then( data => {
             data.forEach( attraction => {
                 if ( clickedArea === attraction.area_id) {
                     areaAttractionArr.push(attraction);
+                    console.log(clickedTime);
                     // console.log("clicked area attraction array", areaAttractionArr[i]);
                 }
             });
             for (let i = 0; i < areaAttractionArr.length; i++) {
-                $(".attractionByArea").append(`<div class="attractionName" id="attraction${areaAttractionArr[i].id}">${areaAttractionArr[i].name} <div class="hidden" id="attraction${areaAttractionArr[i].id}"><p>${areaAttractionArr[i].description}</p></div></div>`);
+                $(".attractionByArea").append(`<div class="attractionName" id="attraction${areaAttractionArr[i].id}">${areaAttractionArr[i].name} (${typeArr[(areaAttractionArr[i].type_id)-1]})<div class="hidden" id="attraction${areaAttractionArr[i].id}"><p>${areaAttractionArr[i].description}</p></div></div>`);
             }
             // for (let i = 0; i < areaAttractionArr.length; i++) {
             //     $("#sidebarContent").append(attractionTemplate(areaAttractionArr));
@@ -40,7 +44,7 @@ module.exports.attractionToArea=()=>{
 };
 
 
-
+// time is under /.attractions
 
 
 
