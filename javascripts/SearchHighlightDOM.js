@@ -36,13 +36,17 @@ module.exports.highlightArea = () => {
         idArr.push(e.area_id);
     // use area_id to give a class to area section, or to toggle highlight class
         let newIdArr = _.uniqBy(idArr);
-        console.log("CHECK THIS", newIdArr);
         newIdArr.forEach( (area_id) =>{
             $(`#${area_id}`)
             .addClass("highlight");
+            
+            $(".wrapper").click( () =>{
+                $(`#${area_id}`)
+                .removeClass("highlight");
+            });
         }); 
         return idArr;
     });
     }
-
 };
+
