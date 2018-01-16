@@ -2,7 +2,10 @@ module.exports = function(grunt){
   
   grunt.initConfig({
     browserify: {
-      'dist/bundle.js': ['javascripts/main.js']
+      'dist/bundle.js': ['javascripts/main.js'],
+      options: {
+        transform: ['hbsfy'],
+      }
     },
     jshint: {
       files: ['javascripts/**/*.js'],

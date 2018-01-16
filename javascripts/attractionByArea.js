@@ -2,6 +2,8 @@
 
 let factory = require("./factory");
 const $ = require('jquery');
+const formatter = require('./formatter');
+const attractionTemplate = require('../templates/areaAttraction.hbs');
 
 
 module.exports.attractionToArea=()=>{
@@ -9,36 +11,27 @@ module.exports.attractionToArea=()=>{
         $(".attractionByArea").html('');
         let areaAttractionArr = [];
         let clickedArea = +event.target.id;
-        console.log("area clicked", +event.target.id);
-        factory.getAttractions().then( data => {
-            data.forEach( attraction => {
+        let attractionData = factory.getAttractions();
+        let attractionTypeData = factory.getAttractionTypes();
+        let attractionArea = factory.getAreas();
+        Promise.all([attractionData, attractionTypeData, attractionArea])
+        .then( data => {
+            let newAttArr = formatter.attractionData(data);
+            newAttArr.forEach( attraction => {
                 if ( clickedArea === attraction.area_id) {
                     areaAttractionArr.push(attraction);
-                    // console.log("clicked area attraction array", areaAttractionArr[i]);
                 }
             });
-            for (let i = 0; i < areaAttractionArr.length; i++) {
-                $(".attractionByArea").append(`<div class="attractionName" id="attraction${areaAttractionArr[i].id}">${areaAttractionArr[i].name} <div class="hidden" id="attraction${areaAttractionArr[i].id}"><p>${areaAttractionArr[i].description}</p></div></div>`);
-            }
-            // for (let i = 0; i < areaAttractionArr.length; i++) {
-            //     $("#sidebarContent").append(attractionTemplate(areaAttractionArr));
-            // }
+            $(".attractionByArea").append(attractionTemplate(areaAttractionArr));
         });
-        console.log("Attractions in the area", areaAttractionArr);
-    });
-    
-    //Show an attractions's Description & Hours when clicked
-    $("#sidebarContent").on('click', () => {
-        $(event.target).children("div").toggleClass("show");
-        console.log("sidebar clicked", event.target);
-        // $("event.target")
-        // $(`"#attraction${areaAttractionArr[i].id}"`);
-        // console.log("this is the attraction id that was clicked", areaAttractionArr[i].
-    
-    }); 
-
+    });    
 };
 
+// Add and remove description & times when attraction is clicked
+$(document).on('click', '.attractionName', function() {
+    $(this).children().addClass("show");
+    $(this).siblings().children(".hidden").removeClass("show");
+});
 
 
 
