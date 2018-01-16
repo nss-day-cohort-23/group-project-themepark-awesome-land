@@ -58,3 +58,17 @@ module.exports.getAll = () => {
   });
 };
 
+module.exports.getAttractionTypes = () => {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: "https://awesome-land.firebaseio.com/attraction_types.json"
+        }).done( (data) => {
+            resolve(data);
+            // console.log("attraction data", data);
+    
+        }).fail((error) => {
+            reject(error);
+        });
+    });
+};
+

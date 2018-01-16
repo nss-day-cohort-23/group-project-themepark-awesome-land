@@ -1,11 +1,15 @@
-{{!-- <div class="attractionName" id="attraction{{id}}">
-    {{name}}
+{{#each this}}
+<div class="attractionName" id="attraction{{id}}">
+    <a href="#">{{name}} ({{typeName}})</a>
     <div class="hidden" id="attraction{{id}}">
         <p>{{description}}</p>
-        {{#if times}}
+        <p>{{times}}</p>
+        {{!-- <p>{{times}}</p> --}}
+        {{!-- {{#if times}}
             {{#each times}}
-               <li>{{this}}</li> 
+                <p>{{this}}</p> 
             {{/each}}
-        {{/if}}
+        {{/if}} --}}
     </div>
-</div> --}}
+</div>
+{{/each}}
