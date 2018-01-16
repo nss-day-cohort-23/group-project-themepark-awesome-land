@@ -3,14 +3,13 @@
     <a href="#">{{name}} ({{typeName}})</a>
     <div class="hidden" id="attraction{{id}}">
         <p>{{description}}</p>
-        {{#if times}}
-            {{#each this}}
-
-                <ul class="eventTimes>
-                    <li>{{times}}</li> 
-                </ul>
+        <p>{{times}}</p>
+        {{!-- <p>{{times}}</p> --}}
+        {{!-- {{#if times}}
+            {{#each times}}
+                <p>{{this}}</p> 
             {{/each}}
-        {{/if}}
+        {{/if}} --}}
     </div>
 </div>
 {{/each}}

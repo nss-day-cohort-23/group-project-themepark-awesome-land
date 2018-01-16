@@ -12,7 +12,6 @@ const attractionTemplate = require('../templates/areaAttraction.hbs');
 
 const attractionByArea = require('./attractionByArea');
 
-// const attractionToDom = require('./attractionToDom');
 
 const timeSelector = require('./timeSelector');
 
@@ -21,7 +20,6 @@ const timeSelector = require('./timeSelector');
 
 
 const _ = require('lodash');
-// const attractionTemplate = require('../templates/areaAttraction.hbs');
 
 
 const $ = require('jquery');
@@ -32,76 +30,70 @@ factory.getAttractions();
 areaToDom.outputArea();
 highlight.highlightArea();
 attractionByArea.attractionToArea();
-// formatter.attractionData();
 
 
-// Attempting to format data
-// formatter.getData().then(data => )
-
-// const areaToDom = require('./areaToDom');
-
-
-$(".countryContainer").click( () => {
-    $(".attractionByArea").html('');
-    let areaAttractionArr = [];
-    let clickedArea = +event.target.id;
-    // console.log("area clicked", +event.target.id);
-    let attractionData = factory.getAttractions();
-    let attractionTypeData = factory.getAttractionTypes();
-    let attractionArea = factory.getAreas();
-    Promise.all([attractionData, attractionTypeData, attractionArea])
-    .then( data => {
-        console.log("promiseAll data", data);
-        let newAttArr = formatter.attractionData(data);
-        console.log("newAttArr", newAttArr);
-        newAttArr.forEach( attraction => {
-            if ( clickedArea === attraction.area_id) {
-                areaAttractionArr.push(attraction);
-            }
-            // console.log("promise data", data);
-            // let attractions = data[0];
-            // let types = data[1];
-            // for (let a = 0; a < attractions.length; a++) {
-                //     for (let t = 0; t < types.length; t++) {
-                    //         if (attractions[a].type_id === types[t].id) {
-                        //             attractions[a].typeName = types[t].name;
-                        //         }
-                        //     }
-                        // }
-                        // console.log("data[0]", data[0]);
+// $(".countryContainer").click( () => {
+//     $(".attractionByArea").html('');
+//     let areaAttractionArr = [];
+//     let clickedArea = +event.target.id;
+//     // console.log("area clicked", +event.target.id);
+//     let attractionData = factory.getAttractions();
+//     let attractionTypeData = factory.getAttractionTypes();
+//     let attractionArea = factory.getAreas();
+//     Promise.all([attractionData, attractionTypeData, attractionArea])
+//     .then( data => {
+//         console.log("promiseAll data", data);
+//         let newAttArr = formatter.attractionData(data);
+//         console.log("newAttArr", newAttArr);
+//         newAttArr.forEach( attraction => {
+//             if ( clickedArea === attraction.area_id) {
+//                 areaAttractionArr.push(attraction);
+//             }
+//             // console.log("promise data", data);
+//             // let attractions = data[0];
+//             // let types = data[1];
+//             // for (let a = 0; a < attractions.length; a++) {
+//                 //     for (let t = 0; t < types.length; t++) {
+//                     //         if (attractions[a].type_id === types[t].id) {
+//                         //             attractions[a].typeName = types[t].name;
+//                         //         }
+//                         //     }
+//                         // }
+//                         // console.log("data[0]", data[0]);
                         
-                        // attractions.forEach( attraction => {
-                            //     if ( clickedArea === attraction.area_id) {
-                                //         areaAttractionArr.push(attraction);
-                                //     }
-                                //     $(".attractionByArea").append(attractionTemplate(areaAttractionArr));
-                            });
-                            $(".attractionByArea").append(attractionTemplate(areaAttractionArr));
+//                         // attractions.forEach( attraction => {
+//                             //     if ( clickedArea === attraction.area_id) {
+//                                 //         areaAttractionArr.push(attraction);
+//                                 //     }
+//                                 //     $(".attractionByArea").append(attractionTemplate(areaAttractionArr));
+//                             });
+//                             $(".attractionByArea").append(attractionTemplate(areaAttractionArr));
 
-        // let attractionsWithTypes = attractions.map( attraction => {
-        //     let currentAttraction = Object.keys(attraction);
-        //     console.log("currentAttraction ", currentAttraction);
-        // });
-        // console.log('Promise all data', data);
-    });
-    // factory.getAttractions().then( data => {
-    //     data.forEach( attraction => {
-    //         if ( clickedArea === attraction.area_id) {
-    //             areaAttractionArr.push(attraction);
-    //             // console.log("clicked area attraction array", areaAttractionArr[i]);
-    //         }
-    //     });
-    //     // for (let i = 0; i < areaAttractionArr.length; i++) {
-    //     //     $("#sidebarContent").append(`<div class="attractionName" id="attraction${areaAttractionArr[i].id}">${areaAttractionArr[i].name} (${typeArr[(areaAttractionArr[i].type_id)-1]}) <div class="hidden" id="attraction${areaAttractionArr[i].id}"><p>${areaAttractionArr[i].description}</p></div></div>`);
-    //     // }
-    //     // HANDLEBARS
-    //     $(".attractionByArea").append(attractionTemplate(areaAttractionArr));
-    //     // for (let i = 0; i < areaAttractionArr.length; i++) {
-    //     //     $("#sidebarContent").append(attractionTemplate(areaAttractionArr));
-    //     // }
-    //     // console.log("Attractions in the area", areaAttractionArr);
-    // });
-});
+//         // let attractionsWithTypes = attractions.map( attraction => {
+//         //     let currentAttraction = Object.keys(attraction);
+//         //     console.log("currentAttraction ", currentAttraction);
+//         // });
+//         // console.log('Promise all data', data);
+//     });
+//     // factory.getAttractions().then( data => {
+//     //     data.forEach( attraction => {
+//     //         if ( clickedArea === attraction.area_id) {
+//     //             areaAttractionArr.push(attraction);
+//     //             // console.log("clicked area attraction array", areaAttractionArr[i]);
+//     //         }
+//     //     });
+//     //     // for (let i = 0; i < areaAttractionArr.length; i++) {
+//     //     //     $("#sidebarContent").append(`<div class="attractionName" id="attraction${areaAttractionArr[i].id}">${areaAttractionArr[i].name} (${typeArr[(areaAttractionArr[i].type_id)-1]}) <div class="hidden" id="attraction${areaAttractionArr[i].id}"><p>${areaAttractionArr[i].description}</p></div></div>`);
+//     //     // }
+//     //     // HANDLEBARS
+//     //     $(".attractionByArea").append(attractionTemplate(areaAttractionArr));
+//     //     // for (let i = 0; i < areaAttractionArr.length; i++) {
+//     //     //     $("#sidebarContent").append(attractionTemplate(areaAttractionArr));
+//     //     // }
+//     //     // console.log("Attractions in the area", areaAttractionArr);
+//     // });
+// });
+
 
 
 // // Show an area's attractions when clicked
