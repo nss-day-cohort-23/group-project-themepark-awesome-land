@@ -1,31 +1,22 @@
 .wrapper{
-    background-color: darkgray;
-}
+    // background-color: darkgray;
+    background-image: url("../image/disco-back.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 
-.infoContainer{
-    padding-bottom: 30px;
 }
-
-.infoWrap{
-    background-color: black;
-    color: lightgray;
-    border: 1px solid black;
-    border-radius: 10px;
-    box-shadow: 5px 5px 10px #f3bc56;
-    padding: 15px;
-}
-
+//------------------------------------------HEAD-------------------------------------------------
 header {
     margin-bottom: 30px;
-    background-color: black;
+    background-color: rgba(43, 22, 17, 0.705);
     border-bottom: 1px solid black;
-    box-shadow: 0px 5px 10px #f3bc56;
+    box-shadow: 0px 4px 10px rgba(107, 181, 200, 0.637);
 }
 
 #search{
-    width: 250px;
+    width: 350px;
     height: 40px;
-    margin-left: 13em;
+    margin-left: 9em;
 }
 
 img{
@@ -41,61 +32,128 @@ img{
 }
 
 footer {
-    background-color: black;
-    border: 1px black solid;
+    background-color:rgba(43, 22, 17, 0.705);
     div {
         list-style:  none;
-        color: rgba(107, 181, 200, 0.637) ;
+        color: #ECE5C9;
         text-align: center;
     }
 }
 
+p{
+    color: #4BA174;
+}
+
+
+
+
+
 // ---------------------------------------SIDE BAR--------------------------------------------
+.infoContainer{
+    padding-bottom: 30px;
+}
+
 .sidebarLists li {
     list-style: none;
-    color: rgba(0, 0, 0, 0.651);
+    color: #ECE5C9;
     font-size: .85em;
+    font-family: 'Comfortaa', cursive;
+}
+
+.sidebarLists a {
+    color: #ECE5C9;
+    font-family: 'Comfortaa', cursive;
+}
+
+.sideTitle{
+    font-family: 'Comfortaa', cursive;
+    text-shadow: 1px 1px #469E6C;
+    color: #ECE5C9;
+}
+
+.col-4{
+    margin-left: 0px;
+}
+
+.secTitle{
+    font-family: 'Comfortaa', cursive;
+    font-size: 17px;
+    color: #ECE5C9;
+    border-bottom: 1px solid #469E6C;
+}
+
+.infoWrap{
+    margin-left: 0px;
+    margin-top: -20px;
+    padding-top: 15px;
+    padding-left: 15px;
+    background-color: rgba(43, 22, 17, 0.705);
+    color: lightgray;
+    border: 1px solid black;
+    border-radius: 0px 15px 15px 0px;
+    box-shadow: 2px 2px 15px #6BB5C8;
 }
 
 .attractionByArea{
-    margin: 10px;
-    height: 10em;
+    padding: 10px;
+    margin: 15px;
+    height: 12em;
     width: 22em;
-    overflow: scroll;
-    border: 1px solid white;
-    background-color:#6BB5C8;
+    overflow: auto;
+    border: 1px solid #ECE5C9;;
+    background-color:rgb(43, 22, 17);
+    color: #ECE5C9;
     border-radius: 5px;
-    box-shadow: -2px -2px 10px #f3bc56;
+    box-shadow: -2px -2px #ECE5C9;
+    color: black;
+    font-family: 'Comfortaa', cursive;
 }
 .currentEvents{
-    margin: 10px;
-    height: 10em;
+    padding: 10px;
+    margin: 15px;
+    height: 12em;
     width: 22em;
-    overflow: scroll;
-    border: 1px solid white;
-    background-color:#6BB5C8;
+    overflow: auto;
+    border: 1px solid #ECE5C9;
+    background-color:rgb(43, 22, 17);
+    color: #ECE5C9;
     border-radius: 5px;
-    box-shadow: -2px -2px 10px #f3bc56;
+    box-shadow: -2px -2px #ECE5C9;
+    font-family: 'Comfortaa', cursive;
 
 }
 
 .searchByTime{
-    margin: 10px;
-    height: 10em;
+    padding: 10px;
+    margin: 15px;
+    height: 12em;
     width: 22em;
-    overflow: scroll;
-    border: 1px solid white;
-    background-color:#6BB5C8;
+    overflow: auto;
+    border: 1px solid #ECE5C9;
+    background-color:rgb(43, 22, 17);
+    color: #ECE5C9;
     border-radius: 5px;
-    box-shadow: -2px -2px 10px #f3bc56;
+    box-shadow: -2px -2px #ECE5C9;
+    font-family: 'Comfortaa', cursive;
 }
-// -------------------------------------------------------------------------------------------
 
-.infoContainer {
-    // border: 3px solid black;
-    margin-left: 10px;
-    margin-bottom: 1px;
+// -----------------------------------------------------------
+//-------------------------------------------MAP------------------------------------------------
+// -----------------------------------------------------------
 
+.Map-Title{
+    text-align: center;
+    font-size: 70px;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.541);
+    border-bottom: 3px solid #6BB5C8;
+    border-radius: 20px;
+    text-shadow: 2px 2px #469E6C;
+    color: rgba(43, 22, 17, 0.877);
+    margin-top: -25px;
+    margin-bottom: 20px;
+    font-family: 'Comfortaa', cursive;
+    
 }
 
 #areaContainer{
@@ -116,25 +174,29 @@ footer {
 .area{
     color: lightgray;
     border-radius: 50%;
-    box-shadow:
-    0 0 0 5px #BDFF9D,
-    0 0 0 10px #CF861E,
-    0 0 0 15px #6BB5C8;
-    background: black;
+    border: 2px solid #ECE5C9;
+    background: rgb(43, 22, 17);
+    box-shadow: 2px 2px 8px black;
     font-size: 20px;
     text-align: center;
+    vertical-align: middle;
+    line-height: 175px;  
+    font-family: 'Comfortaa', cursive;
+    height: 200px; 
+    width: 200px;
 }
 
 .highlight{
-    color: rgba(242, 243, 231, 0.699);
+    z-index: 100;
+    color: #54A374;
     border-radius: 50%;
-    box-shadow:
-    0 0 0 5px red,
-    0 0 0 10px red,
-    0 0 0 15px red;
-    background: black;
-    font-size: 30px;
+    border: 10px solid rgba(230, 52, 20, 0.877);
+    background: rgb(43, 22, 17);
+    font-weight: bold;
+    font-size: 25px;
     text-align: center;
+    height: 250px; 
+    width: 250px;
 }
 
 .area1 {
@@ -142,12 +204,14 @@ footer {
 }
 .area1:hover{
     background-color: #730217;
+    z-index: 150;
 }
 .area2 {
     grid-area: a2;
 }
 .area2:hover{
     background-color: #D15530;
+    z-index: 150;
 }
 
 .area3 {
@@ -155,6 +219,7 @@ footer {
 }
 .area3:hover{
     background-color: #A37849;
+    z-index: 150;
 }
 
 .area4 {
@@ -162,6 +227,7 @@ footer {
 }
 .area4:hover{
     background-color: #2594D9;
+    z-index: 150;
 }
 
 .area5 {
@@ -169,6 +235,7 @@ footer {
 }
 .area5:hover{
     background-color: #E73C81;
+    z-index: 150;
 }
 
 .area6 {
@@ -176,6 +243,7 @@ footer {
 }
 .area6:hover{
     background-color: #3E4D8C;
+    z-index: 150;
 }
 
 .area7 {
@@ -183,6 +251,7 @@ footer {
 }
 .area7:hover{
     background-color: #730217;
+    z-index: 150;
 }
 
 .area8 {
@@ -190,6 +259,7 @@ footer {
 }
 .area8:hover{
     background-color: rgba(248, 248, 122, 0.986);
+    z-index: 150;
 }
 
 .area9 {
