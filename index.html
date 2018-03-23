@@ -1,85 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="stylesheets/main.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
-    <title>Document</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="stylesheets/main.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
+	 crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+	<title>Document</title>
 </head>
+
 <body>
-    <div class="wrapper">
-    <header>
-        <nav class="awesomeNav">
-                <img src="image/AL-Logo.png" alt="Awesome Land's Awesome Logo">
-                <input id="search" type="search" placeholder="Search Our Attractions" aria-label="Search">
-                <button id"dropdownMenuButton" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Attraction Schedule
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">9:00AM</a>
-                    <a class="dropdown-item" href="#">10:00AM</a>
-                    <a class="dropdown-item" href="#">11:00AM</a>
-                    <a class="dropdown-item" href="#">12:00AM</a>
-                    <a class="dropdown-item" href="#">1:00PM</a>
-                    <a class="dropdown-item" href="#">2:00PM</a>
-                    <a class="dropdown-item" href="#">3:00PM</a>
-                    <a class="dropdown-item" href="#">4:00PM</a>
-                    <a class="dropdown-item" href="#">5:00PM</a>
-                    <a class="dropdown-item" href="#">6:00PM</a>
-                    <a class="dropdown-item" href="#">6:00PM</a>
-                    <a class="dropdown-item" href="#">7:00PM</a>
-                    <a class="dropdown-item" href="#">8:00PM</a>
-                    <a class="dropdown-item" href="#">9:00PM</a>
+	<div class="wrapper">
+		<header>
+			<nav class="awesomeNav">
+				<img src="image/AL-Logo.png" alt="Awesome Land's Awesome Logo">
+				<input id="search" type="search" placeholder="Search Our Attractions" aria-label="Search">
+				<button id "dropdownMenuButton" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+				 aria-haspopup="true" aria-expanded="false">
+					Attraction Schedule
+				</button>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<a class="dropdown-item" href="#">9:00AM</a>
+					<a class="dropdown-item" href="#">10:00AM</a>
+					<a class="dropdown-item" href="#">11:00AM</a>
+					<a class="dropdown-item" href="#">12:00AM</a>
+					<a class="dropdown-item" href="#">1:00PM</a>
+					<a class="dropdown-item" href="#">2:00PM</a>
+					<a class="dropdown-item" href="#">3:00PM</a>
+					<a class="dropdown-item" href="#">4:00PM</a>
+					<a class="dropdown-item" href="#">5:00PM</a>
+					<a class="dropdown-item" href="#">6:00PM</a>
+					<a class="dropdown-item" href="#">6:00PM</a>
+					<a class="dropdown-item" href="#">7:00PM</a>
+					<a class="dropdown-item" href="#">8:00PM</a>
+					<a class="dropdown-item" href="#">9:00PM</a>
+				</div>
+			</nav>
+		</header>
+		<div class="companyInfo"></div>
+		<br>
+		<div class="infoContainer">
+			<div class="row">
+				<div class="col-4" id="side30">
+					<div class="infoWrap">
+						<h4 class=s ideTitle>Awesome Land Park Events:</h4>
+						<div class="sidebarLists" id="sidebarContent">
+							<div class="secTitle">By Area:</div>
+							<div class="attractionByArea"></div>
+							<div class="secTitle">Current Events:</div>
+							<div class="currentEvents"></div>
+							<div class="secTitle">Search By Time:</div>
+							<div class="searchByTime"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-8" id="mapArea">
+					<h3 class="Map-Title">Tour Awesome Land!</h4>
+						<div class="countryContainer">
+							<div id="areaContainer">
+								<div class="area area8" id="8">Coming Soon...</div>
+								<div class="area area5" id="9"></div>
+							</div>
+						</div>
+				</div>
+			</div>
+		</div>
+		<footer>
+			<div id="footerDiv">
+				<div>&copy Awesome Land, Inc</div>
+				<div id="currentTime"></div>
+			</div>
+	</div>
+	</footer>
 
-                </div>
-        </nav>
-    </header>
-    <div class="companyInfo"></div>
-    <br>
-    <div class="infoContainer">
-        <div class="row">
-            <div class="col-4" id="side30">
-                <div class="infoWrap">
-                    <h4 class = sideTitle>Awesome Land Park Events:</h4>
-                    <div class="sidebarLists" id="sidebarContent">
-                        <div class="secTitle">By Area:</div>
-                        <div class ="attractionByArea"></div>
-                        <div class="secTitle">Current Events:</div>
-                        <div class ="currentEvents"></div>
-                        <div class="secTitle">Search By Time:</div>
-                        <div class ="searchByTime"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-8" id="mapArea">
-                <h3 class="Map-Title">Tour Awesome Land!</h4>
-                <div class="countryContainer">
-                        <div id="areaContainer">
-                            <div class="area area8" id="8">Coming Soon...</div>
-                            <div class="area area5" id="9"></div>
-                        </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <footer>
-        <div id="footerDiv">
-            <div>&copy Awesome Land, Inc</div>
-            <div id="currentTime"></div>
-        </div>
-    </div>
-    </footer>
-        
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
-
-
-    <script src="dist/bundle.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	 crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	 crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4"
+	 crossorigin="anonymous"></script>
+	<script src="dist/bundle.js"></script>
 </body>
+
 </html>
-
-
