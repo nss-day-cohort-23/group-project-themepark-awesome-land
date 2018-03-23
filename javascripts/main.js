@@ -21,25 +21,23 @@ highlight.highlightArea();
 attractionByArea.attractionToArea();
 
 
-
 function setCurrentTime() {
-    // console.log("set current time is running");
-    let currentTime = new Date();
-    let day = currentTime.getDate();
-    // +1 to the month because Jan = 0.
-    let month = currentTime.getMonth()+1;
-    let year = currentTime.getFullYear();
-    if (month < 10) {
-        month = "0" + month;
-    }
-    if (day < 10) {
-        day = "0" + day;
-    }
-    let footerTime = `${year}-${month}-${day}`;
-    $("#currentTime").html(footerTime);
+	let currentTime = new Date();
+	let day = currentTime.getDate();
+	// +1 to the month because Jan = 0.
+	let month = currentTime.getMonth() + 1;
+	let year = currentTime.getFullYear();
+	if (month < 10) {
+		month = "0" + month;
+	}
+	if (day < 10) {
+		day = "0" + day;
+	}
+	let footerTime = `${year}-${month}-${day}`;
+	$("#currentTime").html(footerTime);
 }
 setCurrentTime();
-    
+
 
 
 
